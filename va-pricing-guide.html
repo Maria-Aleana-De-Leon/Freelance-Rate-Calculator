@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>!function(){var s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}();</script>
+<title>VA Pricing Guide - Rei Philippines</title>
+<meta name="description" content="A comprehensive guide to pricing your VA services in the Philippines. How to set rates, when to raise them, and how to handle client pushback.">
+<link rel="icon" href="assets/images/Logo.gif" type="image/gif">
+<meta property="og:title" content="VA Pricing Guide - Rei Philippines">
+<meta property="og:description" content="How to price your VA services in the Philippines with confidence.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F8F7FC;--bg-3:#F0EEF8;--ink:#111110;--ink-2:#3C3C3A;--ink-3:#7A7A77;--ink-4:#B8B8B4;--border:rgba(0,0,0,0.08);--border-2:rgba(0,0,0,0.14);--accent-bg:#7C3AED;--accent-fg:#FFFFFF;--green:#7C3AED;--green-bg:#EDE9FE;--green-fg:#6D28D9;--serif:'Times New Roman',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1);--radius:10px;--radius-lg:16px;--radius-xl:24px;}
+[data-theme="dark"]{--bg:#0A0A0A;--bg-2:#141414;--bg-3:#1E1E1E;--ink:#F0EFEA;--ink-2:#C4C3BC;--ink-3:#7A7A75;--ink-4:#484846;--border:rgba(255,255,255,0.08);--border-2:rgba(255,255,255,0.14);--accent-bg:#A78BFA;--accent-fg:#0A0A0A;--green:#A78BFA;--green-bg:rgba(124,58,237,0.2);--green-fg:#C4B5FD;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;transition:background 280ms var(--ease),color 280ms var(--ease);}
+a{color:inherit;text-decoration:none;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);transition:background 280ms var(--ease);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1120px;margin:0 auto;padding:0 32px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.nav-logo-text{font-family:var(--serif);font-size:19px;color:var(--accent-bg);letter-spacing:-0.02em;font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:13.5px;color:var(--ink-3);transition:color 160ms;}
+.nav-links a:hover{color:var(--accent-bg);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.theme-toggle{width:52px;height:28px;border-radius:14px;background:var(--bg-3);border:1px solid var(--border-2);cursor:pointer;position:relative;transition:background 280ms,border-color 280ms;}
+.theme-toggle-dot{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--ink);top:3px;left:3px;transition:transform 280ms var(--ease);display:flex;align-items:center;justify-content:center;}
+[data-theme="dark"] .theme-toggle-dot{transform:translateX(24px);}
+.icon-sun{position:absolute;transition:opacity 200ms;opacity:1;}
+.icon-moon{position:absolute;transition:opacity 200ms;opacity:0;}
+[data-theme="dark"] .icon-sun{opacity:0;}
+[data-theme="dark"] .icon-moon{opacity:1;}
+.btn-nav{padding:9px 20px;border-radius:var(--radius);font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:none;background:var(--accent-bg);color:var(--accent-fg);transition:opacity 160ms;}
+.btn-nav:hover{opacity:0.85;}
+@media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}.btn-nav{display:none;}}
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border-2);background:transparent;cursor:pointer;color:var(--ink);transition:background 160ms;}
+.nav-hamburger:hover{background:var(--bg-3);}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:currentColor;transition:transform 280ms,opacity 200ms;}
+.nav-hamburger span+span{margin-top:4px;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);}
+.nav-drawer.open{display:block;}
+.nav-drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--bg);border-left:1px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:8px;animation:slideInRight 280ms var(--ease) both;}
+@keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.nav-drawer-close{align-self:flex-end;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:8px;transition:all 160ms;}
+.nav-drawer-close:hover{background:var(--bg-2);color:var(--ink);}
+.nav-drawer-links{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.nav-drawer-links a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--border);transition:color 160ms;}
+.nav-drawer-links a:hover{color:var(--accent-bg);}
+.nav-drawer-links li:last-child a{border-bottom:none;}
+.nav-drawer-cta{margin-top:16px;}
+.nav-drawer-cta .btn-nav{width:100%;text-align:center;}
+.container{max-width:1120px;margin:0 auto;padding:0 32px;}
+@media(max-width:600px){.container{padding:0 20px;}}
+
+.page-header{padding:72px 0 48px;border-bottom:1px solid var(--border);}
+.page-title{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
+.page-subtitle{font-size:16px;color:var(--ink-3);max-width:620px;line-height:1.7;}
+.page-body{padding:48px 0 72px;max-width:760px;}
+.page-body h2{font-family:var(--serif);font-size:24px;margin:36px 0 14px;letter-spacing:-0.02em;}
+.page-body h2:first-child{margin-top:0;}
+.page-body h3{font-size:17px;font-weight:600;margin:24px 0 10px;}
+.page-body p{color:var(--ink-2);margin-bottom:16px;line-height:1.75;}
+.page-body ul,.page-body ol{color:var(--ink-2);margin:0 0 16px 20px;line-height:1.75;}
+.page-body li{margin-bottom:8px;}
+.page-body strong{color:var(--ink);}
+.formula-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:16px 0 24px;font-family:monospace;font-size:14px;color:var(--ink-2);line-height:1.8;overflow-x:auto;}
+
+.tip-box{background:var(--green-bg);border:1px solid var(--accent-bg);border-radius:var(--radius);padding:16px 20px;margin:16px 0 24px;font-size:14px;color:var(--ink-2);line-height:1.7;}
+.tip-box strong{color:var(--green-fg);}
+
+footer{padding:48px 0 36px;border-top:1px solid var(--border);}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand-name{font-family:var(--serif);font-size:20px;margin-bottom:10px;color:var(--ink);font-style:italic;}
+.footer-brand-desc{font-size:13px;color:var(--ink-3);line-height:1.6;max-width:240px;}
+.footer-col-title{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);margin-bottom:14px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links a{font-size:13.5px;color:var(--ink-3);transition:color 150ms;}.footer-links a:hover{color:var(--accent-bg);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-4);}
+.footer-bottom-links{display:flex;gap:20px;}.footer-bottom-links a{color:var(--ink-4);transition:color 150ms;}
+.footer-bottom-links a:hover{color:var(--ink-3);}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr;gap:32px;}.footer-bottom{flex-direction:column;gap:10px;text-align:center;}}
+</style>
+</head>
+<body>
+<nav>
+ <div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+   <div class="nav-logo-mark">
+    <img src="assets/images/Logo.gif" alt="Rei" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+   </div>
+   <span class="nav-logo-text">Rei</span>
+  </a>
+  <ul class="nav-links">
+   <li><a href="index.html#features">Features</a></li>
+   <li><a href="calculator.html">Calculator</a></li>
+   <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <div class="theme-toggle-dot">
+     <svg class="icon-sun" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-fg)" stroke-width="1.4" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="2.2"/><path d="M5.5 1v1M5.5 9v1M1 5.5H2M9 5.5h1M2.2 2.2l.7.7M8.1 8.1l.7.7M8.8 2.2l-.7.7M2.9 8.1l-.7.7"/></svg>
+     <svg class="icon-moon" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-bg)" stroke-width="1.4" stroke-linecap="round"><path d="M9.5 6.8A4.5 4.5 0 1 1 4.2 1.5a3.5 3.5 0 0 0 5.3 5.3z"/></svg>
+    </div>
+   </button>
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" onclick="openNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+ </div>
+</nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" onclick="if(event.target===this)closeNav()">
+ <div class="nav-drawer-panel">
+  <button class="nav-drawer-close" onclick="closeNav()" aria-label="Close menu">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+   <li><a href="index.html#features" onclick="closeNav()">Features</a></li>
+   <li><a href="calculator.html" onclick="closeNav()">Calculator</a></li>
+   <li><a href="blog.html" onclick="closeNav()">Blog</a></li>
+   <li><a href="about.html" onclick="closeNav()">About</a></li>
+   <li><a href="contact.html" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-cta">
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+ </div>
+</div>
+
+<div class="container">
+ <div class="page-header">
+  <h1 class="page-title">VA Pricing Guide</h1>
+  <p class="page-subtitle">A step-by-step guide to calculating, defending, and evolving your virtual assistant rate.</p>
+ </div>
+
+ <div class="page-body">
+  <h2>Step 1 - Know Your Floor Rate</h2>
+  <p>Your floor rate is the minimum hourly rate you can charge and still cover your living costs, taxes, and business expenses. Here's the formula:</p>
+
+  <div class="formula-box">
+   Floor Rate = (Monthly Living Costs + Taxes + Business Expenses) ÷ Billable Hours per Month
+  </div>
+
+  <p>For example, if your monthly costs total ₱45,000 and you plan to bill 120 hours:</p>
+  <div class="formula-box">
+   ₱45,000 ÷ 120 hours = ₱375/hr ≈ $6.70/hr (at ₱56 per USD)
+  </div>
+
+  <p>This is the absolute minimum - you should never quote below your floor rate. The goal is to price significantly above it.</p>
+
+  <h2>Step 2 - Add Your Skill Premium</h2>
+  <p>Your niche, certifications, and experience level justify charging above the floor. General guidelines:</p>
+  <ul>
+   <li><strong>Certifications</strong> (QuickBooks ProAdvisor, HubSpot, Google Ads) - add $3–$5/hr</li>
+   <li><strong>Niche specialization</strong> (e-commerce, real estate) - add $2–$4/hr over general admin</li>
+   <li><strong>English fluency + client-facing communication</strong> - add $2–$3/hr</li>
+   <li><strong>Years of niche-specific experience</strong> - roughly $1–$2/hr per year up to 5 years</li>
+  </ul>
+
+  <div class="tip-box">
+   <strong>Tip:</strong> Stack premiums. A QBO-certified bookkeeper with 3 years of experience and native-level English could justify $18–$22/hr on OnlineJobs.ph - well above the $6 general admin floor.
+  </div>
+
+  <h2>Step 3 - Factor in Platform Fees</h2>
+  <p>Where you find clients affects your take-home. Common platforms:</p>
+  <ul>
+   <li><strong>OnlineJobs.ph</strong> - no freelancer fee. The rate you quote is what you keep.</li>
+   <li><strong>Upwork</strong> - 10% service fee on lifetime billings with a client (was 20/10/5% tiered before 2023).</li>
+   <li><strong>Fiverr</strong> - 20% flat fee on every order.</li>
+   <li><strong>Direct clients</strong> - no platform fee, but you handle invoicing and payment collection.</li>
+  </ul>
+  <p>To earn the same take-home on Upwork as on OJ.ph, gross up your rate:</p>
+  <div class="formula-box">
+   Upwork Rate = OJ.ph Rate ÷ 0.90
+  </div>
+  <p>See the <a href="platform-fee-guide.html" style="color:var(--accent-bg);">Platform Fee Guide</a> for a detailed breakdown.</p>
+
+  <h2>Step 4 - Choose Your Billing Model</h2>
+  <h3>Hourly</h3>
+  <p>Best for variable-scope work (admin, support). You bill for time tracked. Upside: you are paid for every hour worked. Downside: income varies month to month.</p>
+
+  <h3>Monthly Retainer</h3>
+  <p>Client pays a fixed amount for a set number of hours (or deliverables) each month. Gives you income predictability. Typical formula:</p>
+  <div class="formula-box">
+   Retainer = Hourly Rate × Guaranteed Hours × 0.90 to 0.95 (small loyalty discount)
+  </div>
+
+  <h3>Project-Based</h3>
+  <p>A flat fee for a defined scope - website build, Shopify setup, content batch. Price based on value delivered, not hours. Allows higher effective hourly rates but requires accurate scope estimation.</p>
+
+  <h2>Step 5 - Present Your Rate with Confidence</h2>
+  <ul>
+   <li>Lead with value: "I specialize in Shopify product listing and order management, which typically saves store owners 15–20 hours per week."</li>
+   <li>State the rate clearly: "My rate is $12/hr" - no hedging, no "I was thinking maybe…"</li>
+   <li>Offer tiers: Entry-level clients may want a smaller package. Offering 10-hr, 20-hr, and 40-hr/week options gives them flexibility while anchoring your per-hour rate.</li>
+  </ul>
+
+  <div class="tip-box">
+   <strong>Tip:</strong> Never apologize for your rate. If a client says it's too high, they may not be your ideal client. The <a href="rate-increase-script.html" style="color:var(--green-fg);">Rate Increase Script</a> page has word-for-word templates you can use.
+  </div>
+
+  <h2>Step 6 - Re-Evaluate Every 6 Months</h2>
+  <p>Your rate isn't set in stone. Revisit it twice a year by asking:</p>
+  <ol>
+   <li>Have I gained new skills or certifications?</li>
+   <li>Has my niche's market rate shifted?</li>
+   <li>Am I consistently booked at 80%+ capacity?</li>
+   <li>Have I received strong testimonials or referrals?</li>
+  </ol>
+  <p>If you answered yes to two or more, it's time to raise your rate. Use the <a href="calculator.html" style="color:var(--accent-bg);">Rei Calculator</a> to model the new number.</p>
+ </div>
+</div>
+
+<footer>
+ <div class="container">
+  <div class="footer-inner">
+   <div>
+    <div class="footer-brand-name">Rei</div>
+    <p class="footer-brand-desc">Rate Engine Intelligence — the rate calculator built for Filipino virtual assistants. Know your worth, charge accordingly.</p>
+   </div>
+   <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+     <li><a href="calculator.html">Calculator</a></li>
+     <li><a href="niche-benchmarks.html">Niche benchmarks</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Resources</div>
+    <ul class="footer-links">
+     <li><a href="blog.html">Blog</a></li>
+     <li><a href="va-pricing-guide.html">VA Pricing guide</a></li>
+     <li><a href="platform-fee-guide.html">Platform fee guide</a></li>
+     <li><a href="rate-increase-script.html">Rate increase script</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="privacy.html">Privacy policy</a></li>
+     <li><a href="terms.html">Terms of use</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2025–2026 Rei Philippines. Benchmark estimates only.</span>
+   <div class="footer-bottom-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+
+ // Mobile nav
+ function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navHamburger').classList.add('open');document.body.style.overflow='hidden';}
+ function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');document.body.style.overflow='';}
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+ function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');localStorage.setItem('va-theme',h.getAttribute('data-theme'));}
+(function(){const s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');})();
+</script>
+</body>
+</html>

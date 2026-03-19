@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>!function(){var s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}();</script>
+<title>Rei - Know What You're Worth | Filipino VA Rate Calculator</title>
+<meta name="description" content="The only hourly rate calculator built for Philippine-based virtual assistants. Enter your expenses, pick your niche, and get a data-backed rate in 4 minutes. Free, no sign-up.">
+<link rel="icon" href="assets/images/Logo.gif" type="image/gif">
+<meta property="og:title" content="Rei - Know What You're Worth">
+<meta property="og:description" content="Free rate calculator for Filipino VAs. Enter your expenses, pick your niche, get a real rate — not a guess.">
+<meta property="og:image" content="assets/images/Blog1.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+  TOKENS
+  ============================================================ */
+:root {
+ --bg:    #FFFFFF;
+ --bg-2:   #F8F7FC;
+ --bg-3:   #F0EEF8;
+ --ink:    #111110;
+ --ink-2:   #3C3C3A;
+ --ink-3:   #7A7A77;
+ --ink-4:   #B8B8B4;
+ --border:  rgba(0,0,0,0.08);
+ --border-2: rgba(0,0,0,0.14);
+ --accent:  #7C3AED;
+ --accent-bg: #7C3AED;
+ --accent-fg: #FFFFFF;
+ --green:   #7C3AED;
+ --green-bg: #EDE9FE;
+ --green-fg: #6D28D9;
+ --amber:   #92610A;
+ --amber-bg: #FDF4E3;
+ --serif:   'Times New Roman', Georgia, serif;
+ --sans:   'Montserrat', system-ui, sans-serif;
+ --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+ --radius:  10px;
+ --radius-lg: 16px;
+ --radius-xl: 24px;
+}
+
+[data-theme="dark"] {
+ --bg:    #0A0A0A;
+ --bg-2:   #141414;
+ --bg-3:   #1E1E1E;
+ --ink:    #F0EFEA;
+ --ink-2:   #C4C3BC;
+ --ink-3:   #7A7A75;
+ --ink-4:   #484846;
+ --border:  rgba(255,255,255,0.08);
+ --border-2: rgba(255,255,255,0.14);
+ --accent-bg: #A78BFA;
+ --accent-fg: #0A0A0A;
+ --green:   #A78BFA;
+ --green-bg: rgba(124,58,237,0.2);
+ --green-fg: #C4B5FD;
+ --amber:   #FCD34D;
+ --amber-bg: rgba(120,80,0,0.25);
+}
+
+/* ============================================================
+  RESET & BASE
+  ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+ font-family: var(--sans);
+ background: var(--bg);
+ color: var(--ink);
+ font-size: 15px;
+ line-height: 1.65;
+ transition: background 280ms var(--ease), color 280ms var(--ease);
+ overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ============================================================
+  TYPOGRAPHY HELPERS
+  ============================================================ */
+.display {
+ font-family: var(--serif);
+ font-weight: 400;
+ line-height: 1.08;
+ letter-spacing: -0.03em;
+}
+
+.display-xl { font-size: clamp(48px, 7vw, 88px); }
+.display-lg { font-size: clamp(36px, 5vw, 60px); }
+.display-md { font-size: clamp(28px, 3.5vw, 42px); }
+.display-sm { font-size: clamp(22px, 2.5vw, 30px); }
+
+.eyebrow {
+ font-size: 11px;
+ font-weight: 500;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--ink-3);
+}
+
+/* ============================================================
+  LAYOUT UTILITIES
+  ============================================================ */
+.container {
+ max-width: 1120px;
+ margin: 0 auto;
+ padding: 0 32px;
+}
+
+.container-narrow {
+ max-width: 760px;
+ margin: 0 auto;
+ padding: 0 32px;
+}
+
+/* ============================================================
+  NAV
+  ============================================================ */
+nav {
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ background: var(--bg);
+ border-bottom: 1px solid var(--border);
+ transition: background 280ms var(--ease);
+}
+
+.nav-inner {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 62px;
+ max-width: 1120px;
+ margin: 0 auto;
+ padding: 0 32px;
+}
+
+.nav-logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.nav-logo-mark {
+ width: 32px;
+ height: 32px;
+ border-radius: 8px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden;
+}
+
+.nav-logo-text {
+ font-family: var(--serif);
+ font-size: 19px;
+ color: var(--accent-bg);
+ letter-spacing: -0.02em;
+ font-style: italic;
+}
+
+.nav-links {
+ display: flex;
+ align-items: center;
+ gap: 28px;
+ list-style: none;
+}
+
+.nav-links a {
+ font-size: 13.5px;
+ color: var(--ink-3);
+ transition: color 160ms;
+}
+
+.nav-links a:hover { color: var(--accent-bg); }
+
+.nav-right {
+ display: flex;
+ align-items: center;
+ gap: 14px;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+ width: 52px;
+ height: 28px;
+ border-radius: 14px;
+ background: var(--bg-3);
+ border: 1px solid var(--border-2);
+ cursor: pointer;
+ position: relative;
+ transition: background 280ms var(--ease), border-color 280ms var(--ease);
+ flex-shrink: 0;
+}
+
+.theme-toggle-dot {
+ position: absolute;
+ width: 20px;
+ height: 20px;
+ border-radius: 50%;
+ background: var(--ink);
+ top: 3px;
+ left: 3px;
+ transition: transform 280ms var(--ease), background 280ms var(--ease);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+[data-theme="dark"] .theme-toggle-dot {
+ transform: translateX(24px);
+}
+
+.icon-sun, .icon-moon {
+ position: absolute;
+ transition: opacity 200ms;
+}
+
+.icon-sun { opacity: 1; }
+.icon-moon { opacity: 0; }
+[data-theme="dark"] .icon-sun { opacity: 0; }
+[data-theme="dark"] .icon-moon { opacity: 1; }
+
+.btn-nav {
+ padding: 9px 20px;
+ border-radius: var(--radius);
+ font-family: var(--sans);
+ font-size: 13px;
+ font-weight: 500;
+ cursor: pointer;
+ border: none;
+ background: var(--accent-bg);
+ color: var(--accent-fg);
+ transition: opacity 160ms;
+}
+
+.btn-nav:hover { opacity: 0.85; }
+
+/* ============================================================
+  HERO
+  ============================================================ */
+.hero {
+ padding: 100px 0 80px;
+ position: relative;
+ overflow: hidden;
+}
+
+.hero-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 64px;
+ align-items: center;
+}
+
+.hero-eyebrow {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ padding: 5px 12px;
+ border: 1px solid var(--border-2);
+ border-radius: 20px;
+ margin-bottom: 24px;
+}
+
+.hero-eyebrow-dot {
+ width: 6px;
+ height: 6px;
+ border-radius: 50%;
+ background: var(--green);
+}
+
+.hero-eyebrow-text { font-size: 11.5px; color: var(--ink-3); }
+
+.hero-title { margin-bottom: 22px; }
+
+.hero-title em {
+ font-style: italic;
+ color: var(--ink-3);
+}
+
+.hero-body {
+ font-size: 16px;
+ color: var(--ink-3);
+ max-width: 420px;
+ margin-bottom: 36px;
+ line-height: 1.7;
+}
+
+.hero-cta {
+ display: flex;
+ align-items: center;
+ gap: 14px;
+ flex-wrap: wrap;
+}
+
+.btn-primary {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ padding: 13px 28px;
+ border-radius: var(--radius);
+ font-family: var(--sans);
+ font-size: 14px;
+ font-weight: 500;
+ background: var(--accent-bg);
+ color: var(--accent-fg);
+ cursor: pointer;
+ border: none;
+ transition: opacity 160ms, transform 160ms;
+}
+
+.btn-primary:hover { opacity: 0.87; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ padding: 13px 22px;
+ border-radius: var(--radius);
+ font-family: var(--sans);
+ font-size: 14px;
+ color: var(--ink-2);
+ border: 1px solid var(--border-2);
+ background: transparent;
+ cursor: pointer;
+ transition: border-color 160ms, color 160ms, background 160ms;
+}
+
+.btn-secondary:hover { border-color: var(--ink); color: var(--ink); background: var(--bg-2); }
+
+.hero-stat-row {
+ display: flex;
+ gap: 36px;
+ margin-top: 52px;
+ padding-top: 36px;
+ border-top: 1px solid var(--border);
+}
+
+.hero-stat-num {
+ font-family: var(--serif);
+ font-size: 28px;
+ color: var(--ink);
+ line-height: 1;
+}
+
+.hero-stat-label {
+ font-size: 12px;
+ color: var(--ink-3);
+ margin-top: 4px;
+}
+
+/* HERO VISUAL */
+.hero-visual {
+ position: relative;
+}
+
+.hero-card {
+ background: var(--bg-2);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-xl);
+ padding: 28px;
+ position: relative;
+ transition: background 280ms var(--ease), border-color 280ms var(--ease);
+}
+
+.hero-card-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ margin-bottom: 22px;
+}
+
+.hero-card-title {
+ font-size: 11px;
+ font-weight: 500;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--ink-4);
+}
+
+.hero-card-badge {
+ font-size: 10px;
+ padding: 3px 9px;
+ border-radius: 20px;
+ background: var(--green-bg);
+ color: var(--green-fg);
+ font-weight: 500;
+}
+
+.rate-display {
+ margin-bottom: 20px;
+}
+
+.rate-label { font-size: 12px; color: var(--ink-3); margin-bottom: 4px; }
+
+.rate-big {
+ font-family: var(--serif);
+ font-size: 52px;
+ line-height: 1;
+ letter-spacing: -2px;
+ color: var(--ink);
+}
+
+.rate-big span { font-size: 20px; vertical-align: top; line-height: 2.4; letter-spacing: 0; }
+
+.rate-sub { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+
+.rate-bars { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+
+.rate-bar-row { display: flex; align-items: center; gap: 10px; }
+.rate-bar-key { font-size: 12px; color: var(--ink-3); width: 90px; flex-shrink: 0; }
+.rate-bar-track {
+ flex: 1;
+ height: 5px;
+ background: var(--bg-3);
+ border-radius: 3px;
+ overflow: hidden;
+}
+.rate-bar-fill { height: 100%; border-radius: 3px; }
+.rate-bar-fill.survival { background: var(--ink-4); width: 42%; }
+.rate-bar-fill.fair   { background: var(--ink-3); width: 62%; }
+.rate-bar-fill.asking  { background: var(--ink);  width: 78%; }
+.rate-bar-val { font-size: 12px; font-weight: 500; color: var(--ink); width: 50px; text-align: right; }
+
+.hero-card-footer {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 16px;
+ border-top: 1px solid var(--border);
+}
+
+.hero-card-footer-label { font-size: 11.5px; color: var(--ink-3); }
+
+.hero-card-footer-val {
+ font-family: var(--serif);
+ font-size: 18px;
+ color: var(--green);
+}
+
+.hero-float-1 {
+ position: absolute;
+ bottom: -16px;
+ left: -16px;
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+ padding: 12px 16px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+ transition: background 280ms var(--ease), border-color 280ms var(--ease);
+}
+
+.hero-float-icon {
+ width: 32px;
+ height: 32px;
+ border-radius: 8px;
+ background: var(--green-bg);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.hero-float-text { font-size: 12px; color: var(--ink-2); }
+.hero-float-text strong { display: block; font-weight: 500; color: var(--ink); }
+
+/* ============================================================
+  SECTION COMMON
+  ============================================================ */
+section { padding: 80px 0; }
+section + section { border-top: 1px solid var(--border); }
+
+.section-intro {
+ text-align: center;
+ max-width: 580px;
+ margin: 0 auto 56px;
+}
+
+.section-intro .eyebrow { margin-bottom: 12px; }
+.section-intro .display-md { margin-bottom: 14px; }
+.section-intro p { color: var(--ink-3); font-size: 15px; }
+
+/* ============================================================
+  FEATURES
+  ============================================================ */
+.features-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 1px;
+ background: var(--border);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-xl);
+ overflow: hidden;
+}
+
+.feature-item {
+ background: var(--bg);
+ padding: 32px 28px;
+ transition: background 280ms var(--ease);
+}
+
+.feature-item:hover { background: var(--bg-2); }
+
+.feature-icon-wrap {
+ width: 44px;
+ height: 44px;
+ border-radius: var(--radius);
+ background: var(--bg-2);
+ border: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-bottom: 18px;
+ color: var(--ink-2);
+ transition: background 280ms var(--ease);
+}
+
+.feature-item:hover .feature-icon-wrap { background: var(--accent-bg); color: var(--accent-fg); }
+
+.feature-title {
+ font-family: var(--serif);
+ font-size: 20px;
+ margin-bottom: 8px;
+ color: var(--ink);
+}
+
+.feature-body { font-size: 13.5px; color: var(--ink-3); line-height: 1.65; }
+
+/* ============================================================
+  HOW IT WORKS
+  ============================================================ */
+.steps-grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 0;
+ position: relative;
+}
+
+.steps-grid::before {
+ content: '';
+ position: absolute;
+ top: 22px;
+ left: calc(12.5% + 22px);
+ right: calc(12.5% + 22px);
+ height: 1px;
+ background: var(--border-2);
+ z-index: 0;
+}
+
+.step-item { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+
+.step-num {
+ width: 44px;
+ height: 44px;
+ border-radius: 50%;
+ background: var(--bg-2);
+ border: 1px solid var(--border-2);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: var(--serif);
+ font-size: 18px;
+ color: var(--ink);
+ margin: 0 auto 16px;
+ transition: background 280ms var(--ease);
+}
+
+.step-item:hover .step-num { background: var(--accent-bg); color: var(--accent-fg); }
+
+.step-title {
+ font-family: var(--serif);
+ font-size: 17px;
+ margin-bottom: 8px;
+ color: var(--ink);
+}
+
+.step-body { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
+
+/* ============================================================
+  COMPARISON TABLE
+  ============================================================ */
+.compare-wrap {
+ border: 1px solid var(--border);
+ border-radius: var(--radius-xl);
+ overflow: hidden;
+}
+
+.compare-head {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ background: var(--bg-2);
+ border-bottom: 1px solid var(--border);
+}
+
+.compare-col-head {
+ padding: 16px 24px;
+ font-size: 12px;
+ font-weight: 500;
+ color: var(--ink-3);
+ letter-spacing: 0.06em;
+ text-transform: uppercase;
+}
+
+.compare-col-head.highlight { background: var(--accent-bg); color: var(--accent-fg); opacity: 0.9; }
+
+.compare-row {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ border-bottom: 1px solid var(--border);
+}
+
+.compare-row:last-child { border-bottom: none; }
+.compare-row:hover .compare-cell { background: var(--bg-2); }
+.compare-row:hover .compare-cell.highlight { background: var(--bg-3); }
+
+.compare-cell {
+ padding: 14px 24px;
+ font-size: 13.5px;
+ color: var(--ink-3);
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ border-right: 1px solid var(--border);
+}
+
+.compare-cell:last-child { border-right: none; }
+.compare-cell.highlight { background: var(--bg-2); color: var(--ink); font-weight: 500; }
+.compare-cell.feature-name { color: var(--ink-2); font-weight: 400; }
+.check-yes { color: var(--green); }
+.check-no { color: var(--ink-4); }
+
+/* ============================================================
+  BLOG
+  ============================================================ */
+.blog-grid {
+ display: grid;
+ grid-template-columns: 1.4fr 1fr 1fr;
+ gap: 20px;
+}
+
+.blog-card {
+ border: 1px solid var(--border);
+ border-radius: var(--radius-xl);
+ overflow: hidden;
+ background: var(--bg);
+ transition: border-color 200ms, background 280ms var(--ease);
+ cursor: pointer;
+}
+
+.blog-card:hover { border-color: var(--accent-bg); background: var(--bg-2); }
+
+.blog-card-img {
+ width: 100%;
+ aspect-ratio: 16/9;
+ background: var(--bg-3);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: var(--ink-4);
+ position: relative;
+ overflow: hidden;
+ transition: background 280ms var(--ease);
+}
+
+.blog-card.featured .blog-card-img { aspect-ratio: 4/3; }
+
+.blog-card-img svg { opacity: 0.35; }
+
+/* Subtle pattern on blog image placeholder */
+.blog-card-img::before {
+ content: '';
+ position: absolute;
+ inset: 0;
+ background-image: repeating-linear-gradient(
+  45deg,
+  transparent,
+  transparent 14px,
+  var(--border) 14px,
+  var(--border) 15px
+ );
+}
+
+.blog-card-body { padding: 22px 22px 24px; }
+
+.blog-tag {
+ display: inline-block;
+ font-size: 10px;
+ font-weight: 500;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--ink-4);
+ margin-bottom: 10px;
+}
+
+.blog-title {
+ font-family: var(--serif);
+ color: var(--ink);
+ margin-bottom: 10px;
+ line-height: 1.25;
+}
+
+.blog-card.featured .blog-title { font-size: 24px; }
+.blog-card:not(.featured) .blog-title { font-size: 18px; }
+
+.blog-excerpt {
+ font-size: 13px;
+ color: var(--ink-3);
+ line-height: 1.6;
+ margin-bottom: 16px;
+}
+
+.blog-card:not(.featured) .blog-excerpt { display: none; }
+
+.blog-meta {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ font-size: 12px;
+ color: var(--ink-4);
+}
+
+.blog-meta-author { display: flex; align-items: center; gap: 7px; }
+
+.blog-avatar {
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ background: var(--bg-3);
+ border: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 9px;
+ font-weight: 500;
+ color: var(--ink-3);
+}
+
+.blog-read-more {
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ font-size: 12px;
+ color: var(--ink-3);
+ transition: color 160ms;
+}
+
+.blog-read-more:hover { color: var(--accent-bg); }
+
+/* Blog small cards stacked column */
+.blog-col { display: flex; flex-direction: column; gap: 20px; }
+
+/* ============================================================
+  TESTIMONIALS
+  ============================================================ */
+.testi-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 16px;
+}
+
+.testi-flip {
+ perspective: 800px;
+ cursor: pointer;
+}
+
+.testi-flip:hover .testi-front {
+ opacity: 0.9;
+ transform: scale(0.98);
+ transition: all 200ms var(--ease);
+}
+
+.testi-flip:hover .testi-flip-hint {
+ color: var(--accent-bg);
+}
+
+.testi-flip-inner {
+ position: relative;
+ width: 100%;
+ transition: transform 0.6s var(--ease);
+ transform-style: preserve-3d;
+}
+
+.testi-flip.flipped .testi-flip-inner {
+ transform: rotateY(180deg);
+}
+
+.testi-front,
+.testi-back {
+ backface-visibility: hidden;
+ -webkit-backface-visibility: hidden;
+ border-radius: var(--radius-lg);
+ border: 1px solid var(--border);
+ padding: 24px;
+}
+
+.testi-front {
+ background: var(--accent-bg);
+ color: var(--accent-fg);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ gap: 8px;
+ min-height: 220px;
+}
+
+.testi-back {
+ position: absolute;
+ inset: 0;
+ transform: rotateY(180deg);
+ background: var(--bg-2);
+ transition: background 280ms var(--ease), border-color 280ms var(--ease);
+}
+
+.testi-back-stat {
+ font-family: var(--serif);
+ font-size: clamp(36px, 4vw, 48px);
+ font-weight: 400;
+ line-height: 1.1;
+ letter-spacing: -0.03em;
+}
+
+.testi-back-label {
+ font-size: 13px;
+ opacity: 0.8;
+ line-height: 1.5;
+ max-width: 200px;
+}
+
+.testi-back-hint {
+ font-size: 11px;
+ opacity: 0.5;
+ margin-top: 8px;
+}
+
+.testi-flip-hint {
+ font-size: 11px;
+ color: var(--ink-4);
+ text-align: center;
+ margin-top: 4px;
+}
+
+.testi-quote {
+ font-family: var(--serif);
+ font-size: 17px;
+ font-style: italic;
+ color: var(--ink-2);
+ line-height: 1.55;
+ margin-bottom: 18px;
+}
+
+.testi-author { display: flex; align-items: center; gap: 10px; }
+
+.testi-avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ background: var(--bg-3);
+ border: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: var(--serif);
+ font-size: 14px;
+ color: var(--ink-3);
+}
+
+.testi-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+.testi-role { font-size: 11.5px; color: var(--ink-4); }
+
+/* ============================================================
+  CTA
+  ============================================================ */
+.cta-section {
+ text-align: center;
+}
+
+.cta-inner {
+ background: #111110;
+ color: #C4B5FD;
+ border-radius: var(--radius-xl);
+ padding: 72px 48px;
+ position: relative;
+ overflow: hidden;
+ border: none;
+}
+
+[data-theme="dark"] .cta-inner {
+ background: linear-gradient(135deg, #7C3AED, #5B21B6, #4C1D95);
+ color: #FFFFFF;
+}
+
+.cta-bg-lines {
+ display: none;
+}
+
+.cta-inner .eyebrow { color: rgba(196,181,253,0.6); margin-bottom: 16px; }
+[data-theme="dark"] .cta-inner .eyebrow { color: rgba(255,255,255,0.55); }
+
+.cta-title {
+ font-family: var(--serif);
+ font-size: clamp(32px, 5vw, 52px);
+ line-height: 1.1;
+ letter-spacing: -0.03em;
+ margin-bottom: 18px;
+ color: #C4B5FD;
+}
+[data-theme="dark"] .cta-title { color: #FFFFFF; }
+
+.cta-body { font-size: 15px; color: rgba(196,181,253,0.55); max-width: 480px; margin: 0 auto 36px; }
+[data-theme="dark"] .cta-body { color: rgba(255,255,255,0.6); }
+
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.btn-cta-primary {
+ padding: 13px 28px;
+ border-radius: var(--radius);
+ font-family: var(--sans);
+ font-size: 14px;
+ font-weight: 500;
+ background: #C4B5FD;
+ color: #111110;
+ border: none;
+ cursor: pointer;
+ transition: opacity 160ms;
+}
+[data-theme="dark"] .btn-cta-primary { background: #FFFFFF; color: #111110; }
+
+.btn-cta-primary:hover { opacity: 0.9; }
+
+.btn-cta-secondary {
+ padding: 13px 22px;
+ border-radius: var(--radius);
+ font-family: var(--sans);
+ font-size: 14px;
+ font-weight: 400;
+ border: 1px solid rgba(196,181,253,0.35);
+ color: #C4B5FD;
+ background: transparent;
+ cursor: pointer;
+ transition: border-color 160ms, background 160ms;
+}
+
+[data-theme="dark"] .btn-cta-secondary { border-color: rgba(255,255,255,0.3); color: #FFFFFF; }
+.btn-cta-secondary:hover { border-color: #C4B5FD; background: rgba(196,181,253,0.08); }
+[data-theme="dark"] .btn-cta-secondary:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.08); }
+
+/* ============================================================
+  FOOTER
+  ============================================================ */
+footer {
+ padding: 48px 0 36px;
+ border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+ display: grid;
+ grid-template-columns: 1.8fr 1fr 1fr 1fr;
+ gap: 48px;
+ margin-bottom: 40px;
+}
+
+.footer-brand-name {
+ font-family: var(--serif);
+ font-size: 20px;
+ margin-bottom: 10px;
+ color: var(--ink);
+ font-style: italic;
+}
+
+.footer-brand-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; max-width: 240px; }
+
+.footer-col-title {
+ font-size: 11px;
+ font-weight: 500;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--ink-4);
+ margin-bottom: 14px;
+}
+
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 13.5px; color: var(--ink-3); transition: color 150ms; }
+.footer-links a:hover { color: var(--accent-bg); }
+
+.footer-bottom {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding-top: 28px;
+ border-top: 1px solid var(--border);
+ font-size: 12px;
+ color: var(--ink-4);
+}
+
+.footer-bottom-links { display: flex; gap: 20px; }
+.footer-bottom-links a { color: var(--ink-4); transition: color 150ms; }
+.footer-bottom-links a:hover { color: var(--ink-3); }
+
+/* ============================================================
+  ANIMATIONS
+  ============================================================ */
+@keyframes fadeUp {
+ from { opacity: 0; transform: translateY(18px); }
+ to  { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero { animation: fadeUp 600ms var(--ease) both; }
+.animate-hero:nth-child(1) { animation-delay: 60ms; }
+.animate-hero:nth-child(2) { animation-delay: 160ms; }
+.animate-hero:nth-child(3) { animation-delay: 240ms; }
+.animate-hero:nth-child(4) { animation-delay: 320ms; }
+
+/* ============================================================
+  RESPONSIVE
+  ============================================================ */
+@media (max-width: 900px) {
+ .hero-grid { grid-template-columns: 1fr; }
+ .hero-visual { display: none; }
+ .features-grid { grid-template-columns: 1fr 1fr; }
+ .steps-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+ .steps-grid::before { display: none; }
+ .blog-grid { grid-template-columns: 1fr; }
+ .blog-col { gap: 20px; }
+ .testi-grid { grid-template-columns: 1fr; }
+ .footer-inner { grid-template-columns: 1fr 1fr; }
+ .nav-links { display: none; }
+ .nav-hamburger { display: flex; }
+ .btn-nav { display: none; }
+}
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border-2);background:transparent;cursor:pointer;color:var(--ink);transition:background 160ms;}
+.nav-hamburger:hover{background:var(--bg-3);}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:currentColor;transition:transform 280ms,opacity 200ms;}
+.nav-hamburger span+span{margin-top:4px;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);}
+.nav-drawer.open{display:block;}
+.nav-drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--bg);border-left:1px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:8px;animation:slideInRight 280ms var(--ease) both;}
+@keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.nav-drawer-close{align-self:flex-end;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:8px;transition:all 160ms;}
+.nav-drawer-close:hover{background:var(--bg-2);color:var(--ink);}
+.nav-drawer-links{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.nav-drawer-links a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--border);transition:color 160ms;}
+.nav-drawer-links a:hover{color:var(--accent-bg);}
+.nav-drawer-links li:last-child a{border-bottom:none;}
+.nav-drawer-cta{margin-top:16px;}
+.nav-drawer-cta .btn-nav{width:100%;text-align:center;}
+
+@media (max-width: 600px) {
+ .container { padding: 0 20px; }
+ .features-grid { grid-template-columns: 1fr; }
+ .steps-grid { grid-template-columns: 1fr; }
+ section { padding: 52px 0; }
+ .hero { padding: 64px 0 52px; }
+ .hero-title { font-size: clamp(28px, 9vw, 48px); }
+ .cta-inner { padding: 48px 24px; }
+ .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+ .compare-wrap { overflow-x: auto; }
+ .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ARTICLE DETAIL OVERLAY */
+.article-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);overflow-y:auto;padding:40px 20px;}
+.article-overlay.open{display:flex;justify-content:center;align-items:flex-start;}
+.article-detail{background:var(--bg);border-radius:var(--radius-xl);max-width:720px;width:100%;margin:0 auto;padding:48px 44px 56px;position:relative;animation:fadeInUp 300ms var(--ease) both;box-shadow:0 20px 60px rgba(0,0,0,0.15);}
+[data-theme="dark"] .article-detail{box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.article-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:all 160ms;}
+.article-close:hover{border-color:var(--ink);color:var(--ink);background:var(--bg-2);}
+.detail-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;padding:3px 9px;border-radius:20px;}
+.tag-rates{background:var(--green-bg);color:var(--green-fg);}
+.tag-platform{background:var(--amber-bg);color:var(--amber);}
+.tag-career{background:var(--bg-3);color:var(--ink-3);}
+.tag-beginner{background:#EEF2FF;color:#4338CA;}
+[data-theme="dark"] .tag-beginner{background:rgba(67,56,202,0.2);color:#A5B4FC;}
+.detail-title{font-family:var(--serif);font-size:clamp(24px,4vw,32px);line-height:1.2;letter-spacing:-0.02em;margin-bottom:12px;color:var(--ink);}
+.detail-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--ink-4);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.detail-body{font-size:15px;line-height:1.75;color:var(--ink-2);}
+.detail-body h2{font-family:var(--serif);font-size:22px;margin:32px 0 12px;color:var(--ink);}
+.detail-body h3{font-size:16px;font-weight:600;margin:24px 0 8px;color:var(--ink);}
+.detail-body p{margin-bottom:14px;}
+.detail-body ul,.detail-body ol{margin:0 0 14px 20px;}
+.detail-body li{margin-bottom:6px;}
+.detail-body strong{color:var(--ink);font-weight:600;}
+.detail-body table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:13.5px;}
+.detail-body th{text-align:left;padding:10px 12px;background:var(--bg-2);border:1px solid var(--border);font-weight:600;font-size:12px;letter-spacing:0.03em;color:var(--ink-2);}
+.detail-body td{padding:10px 12px;border:1px solid var(--border);color:var(--ink-2);}
+.detail-body .formula-block{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin:16px 0 20px;font-size:14px;line-height:1.7;color:var(--ink-2);}
+.detail-body .callout{background:var(--green-bg);border:1px solid rgba(124,58,237,0.15);border-radius:var(--radius);padding:14px 16px;margin:16px 0 20px;font-size:14px;line-height:1.6;color:var(--green-fg);}
+.detail-body .ref-list{font-size:13px;color:var(--ink-3);line-height:1.7;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
+.detail-body .ref-list li{margin-bottom:4px;}
+@media(max-width:600px){.article-detail{padding:32px 24px 40px;}.article-overlay{padding:20px 12px;}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+   NAV
+   ============================================================ -->
+<nav>
+ <div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+   <div class="nav-logo-mark">
+    <img src="assets/images/Logo.gif" alt="Rei" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+   </div>
+   <span class="nav-logo-text">Rei</span>
+  </a>
+
+  <ul class="nav-links">
+   <li><a href="index.html#features">Features</a></li>
+   <li><a href="calculator.html">Calculator</a></li>
+   <li><a href="blog.html">Blog</a></li>
+  </ul>
+
+  <div class="nav-right">
+   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <div class="theme-toggle-dot">
+     <!-- Sun icon -->
+     <svg class="icon-sun" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-fg)" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="5.5" cy="5.5" r="2.2"/>
+      <path d="M5.5 1v1M5.5 9v1M1 5.5H2M9 5.5h1M2.2 2.2l.7.7M8.1 8.1l.7.7M8.8 2.2l-.7.7M2.9 8.1l-.7.7"/>
+     </svg>
+     <!-- Moon icon -->
+     <svg class="icon-moon" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-bg)" stroke-width="1.4" stroke-linecap="round">
+      <path d="M9.5 6.8A4.5 4.5 0 1 1 4.2 1.5a3.5 3.5 0 0 0 5.3 5.3z"/>
+     </svg>
+    </div>
+   </button>
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" onclick="openNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+ </div>
+</nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" onclick="if(event.target===this)closeNav()">
+ <div class="nav-drawer-panel">
+  <button class="nav-drawer-close" onclick="closeNav()" aria-label="Close menu">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+   <li><a href="index.html#features" onclick="closeNav()">Features</a></li>
+   <li><a href="calculator.html" onclick="closeNav()">Calculator</a></li>
+   <li><a href="blog.html" onclick="closeNav()">Blog</a></li>
+   <li><a href="about.html" onclick="closeNav()">About</a></li>
+   <li><a href="contact.html" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-cta">
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+ </div>
+</div>
+
+<!-- ============================================================
+   HERO
+   ============================================================ -->
+<section class="hero">
+ <div class="container">
+  <div class="hero-grid">
+
+   <div class="hero-left">
+    <div class="hero-eyebrow animate-hero">
+     <div class="hero-eyebrow-dot"></div>
+     <span class="hero-eyebrow-text">Built for Filipino VAs 2025–2026</span>
+    </div>
+
+    <h1 class="display display-xl hero-title animate-hero">
+     Know what<br>you're <em>worth.</em>
+    </h1>
+
+    <p class="hero-body animate-hero">
+     The only VA rate calculator built for the Philippines. Enter your monthly expenses, choose your niche, and get a real rate not a guess based on US market data.
+    </p>
+
+    <div class="hero-cta animate-hero">
+     <button class="btn-primary" onclick="window.location.href='calculator.html'">
+      Calculate my rate
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+       <path d="M3 7h8M7 3l4 4-4 4"/>
+      </svg>
+     </button>
+     <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})"></button>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+       <circle cx="7" cy="7" r="5.5"/>
+       <path d="M5 7l1.5 1.5L9.5 5"/>
+      </svg>
+      See how it works
+     </button>
+    </div>
+
+    <div class="hero-stat-row">
+     <div>
+      <div class="hero-stat-num">2M+</div>
+      <div class="hero-stat-label">Filipino VAs in the market</div>
+     </div>
+     <div>
+      <div class="hero-stat-num">$3–$30</div>
+      <div class="hero-stat-label">Realistic hourly rate range</div>
+     </div>
+     <div>
+      <div class="hero-stat-num">4 min</div>
+      <div class="hero-stat-label">Average to get your rate</div>
+     </div>
+    </div>
+   </div>
+
+   <div class="hero-visual">
+    <div class="hero-card">
+     <div class="hero-card-header">
+      <div class="hero-card-title">Your rate summary</div>
+      <div class="hero-card-badge">Social Media VA</div>
+     </div>
+
+     <div class="rate-display">
+      <div class="rate-label">Asking rate (gross)</div>
+      <div class="rate-big"><span>$</span>9.24</div>
+      <div class="rate-sub">≈ PHP 517/hr &nbsp;·&nbsp; Upwork, hourly</div>
+     </div>
+
+     <div class="rate-bars">
+      <div class="rate-bar-row">
+       <div class="rate-bar-key">Survival</div>
+       <div class="rate-bar-track"><div class="rate-bar-fill survival"></div></div>
+       <div class="rate-bar-val">$6.10</div>
+      </div>
+      <div class="rate-bar-row">
+       <div class="rate-bar-key">Fair</div>
+       <div class="rate-bar-track"><div class="rate-bar-fill fair"></div></div>
+       <div class="rate-bar-val">$8.40</div>
+      </div>
+      <div class="rate-bar-row">
+       <div class="rate-bar-key">Asking</div>
+       <div class="rate-bar-track"><div class="rate-bar-fill asking"></div></div>
+       <div class="rate-bar-val">$9.24</div>
+      </div>
+     </div>
+
+     <div class="hero-card-footer">
+      <div class="hero-card-footer-label">Monthly projection (PHP)</div>
+      <div class="hero-card-footer-val">PHP 34,820</div>
+     </div>
+    </div>
+
+    <div class="hero-float-1">
+     <div class="hero-float-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round">
+       <path d="M2 10l3-3 3 3 5-5"/>
+      </svg>
+     </div>
+     <div class="hero-float-text">
+      <strong>Above expense floor</strong>
+      +PHP 8,200 / month surplus
+     </div>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   FEATURES
+   ============================================================ -->
+<section id="features">
+ <div class="container">
+  <div class="section-intro">
+   <p class="eyebrow">What makes it different</p>
+   <h2 class="display display-md">Built for the way Filipino VAs actually work</h2>
+   <p>Not a generic freelance calculator dressed up with a peso sign. Every number is grounded in how the PH VA market actually operates.</p>
+  </div>
+
+  <div class="features-grid">
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 14L10 3l7 11H3z"/>
+      <path d="M10 9v3M10 13.5v.5"/>
+     </svg>
+    </div>
+    <div class="feature-title">Expense floor rate</div>
+    <div class="feature-body">Enter your rent, food, internet, and savings goal. We calculate the true minimum you can afford to accept then gross it up for platform fees.</div>
+   </div>
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="10" cy="10" r="7.5"/>
+      <path d="M10 6v4l3 3"/>
+     </svg>
+    </div>
+    <div class="feature-title">Three-rate output</div>
+    <div class="feature-body">Not one number but three: survival rate, fair market rate, and an asking rate with a confidence buffer built in. Start negotiations knowing your range.</div>
+   </div>
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <rect x="3" y="3" width="14" height="14" rx="2"/>
+      <path d="M3 8h14M8 8v9"/>
+     </svg>
+    </div>
+    <div class="feature-title">Platform-aware gross-up</div>
+    <div class="feature-body">Upwork, Fiverr, OnlineJobs, direct each platform is handled correctly. Fiverr takes 20%, OnlineJobs takes nothing from your pay. The math knows the difference.</div>
+   </div>
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path d="M4 12l4-4 3 3 5-5"/>
+      <path d="M14 6h3v3"/>
+     </svg>
+    </div>
+    <div class="feature-title">9 niche benchmarks</div>
+    <div class="feature-body">From general admin ($3–8/hr) to tech and web dev ($10–30/hr), each niche has its own base rate not a single number applied to everything.</div>
+   </div>
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="10" cy="10" r="7.5"/>
+      <path d="M7.5 10h5M10 7.5v5"/>
+     </svg>
+    </div>
+    <div class="feature-title">Utilization factor</div>
+    <div class="feature-body">Freelancers don't bill every hour they work. Retainer clients get 90% utilization; project-based gets 70%. The floor rate reflects this honestly.</div>
+   </div>
+
+   <div class="feature-item">
+    <div class="feature-icon-wrap">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <rect x="2.5" y="5" width="15" height="11" rx="1.5"/>
+      <path d="M6 5V3.5a4 4 0 0 1 8 0V5"/>
+     </svg>
+    </div>
+    <div class="feature-title">PHP-first output</div>
+    <div class="feature-body">USD rates are great for client conversations. PHP projections are what actually matters for your life. Both are shown, prominently, on the results page.</div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   HOW IT WORKS
+   ============================================================ -->
+<section id="how">
+ <div class="container">
+  <div class="section-intro">
+   <p class="eyebrow">How it works</p>
+   <h2 class="display display-md">Four steps. Under four minutes.</h2>
+   <p>No account required. No email. Just answer four questions and get a rate you can actually use.</p>
+  </div>
+
+  <div class="steps-grid">
+   <div class="step-item">
+    <div class="step-num">1</div>
+    <div class="step-title">Pick your niche</div>
+    <div class="step-body">Choose from 9 VA specializations. Each has its own benchmark range based on current PH market data.</div>
+   </div>
+   <div class="step-item">
+    <div class="step-num">2</div>
+    <div class="step-title">Enter your costs</div>
+    <div class="step-body">Rent, food, internet, transport, savings target. This builds your personal expense floor in PHP.</div>
+   </div>
+   <div class="step-item">
+    <div class="step-num">3</div>
+    <div class="step-title">Set your work setup</div>
+    <div class="step-body">Hourly, retainer, full-time. Hours per week. Tools you know. Platform you use to find clients.</div>
+   </div>
+   <div class="step-item">
+    <div class="step-num">4</div>
+    <div class="step-title">Get three numbers</div>
+    <div class="step-body">Survival rate, fair rate, and a confident asking rate all gross figures you can quote directly to clients.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   COMPARISON
+   ============================================================ -->
+<section id="compare">
+ <div class="container">
+  <div class="section-intro">
+   <p class="eyebrow">Why not just use others</p>
+   <h2 class="display display-md">Most calculators weren't made for you.</h2>
+   <p>Generic freelance calculators assume Western expenses, Western rates, and Western platforms. This one doesn't.</p>
+  </div>
+
+  <div class="compare-wrap">
+   <div class="compare-head">
+    <div class="compare-col-head">Feature</div>
+    <div class="compare-col-head">Generic calculators</div>
+    <div class="compare-col-head highlight">Rei PH</div>
+   </div>
+
+   <div class="compare-row">
+    <div class="compare-cell feature-name">PHP-first output</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> USD only</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> USD + PHP side by side</div>
+   </div>
+   <div class="compare-row">
+    <div class="compare-cell feature-name">Expense floor rate</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> Not included</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> Built from your actual costs</div>
+   </div>
+   <div class="compare-row">
+    <div class="compare-cell feature-name">Platform fee gross-up</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> Often missing or wrong</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> Correct per-platform logic</div>
+   </div>
+   <div class="compare-row">
+    <div class="compare-cell feature-name">PH niche benchmarks</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> US/EU market only</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> 9 PH-specific niches</div>
+   </div>
+   <div class="compare-row">
+    <div class="compare-cell feature-name">Three-rate output</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> Single number only</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> Survival / fair / asking</div>
+   </div>
+   <div class="compare-row">
+    <div class="compare-cell feature-name">Utilization factor</div>
+    <div class="compare-cell"><span class="check-no"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l6 6M10 4l-6 6"/></svg></span> Assumes 100% billable</div>
+    <div class="compare-cell highlight"><span class="check-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 7l3.5 3.5 6-6"/></svg></span> Per-engagement-type factor</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   TESTIMONIALS
+   ============================================================ -->
+<section>
+ <div class="container">
+  <div class="section-intro">
+   <p class="eyebrow">From the community</p>
+   <h2 class="display display-md">VAs who stopped guessing.</h2>
+  </div>
+
+  <div class="testi-grid">
+   <div class="testi-flip" onclick="this.classList.toggle('flipped')">
+    <div class="testi-flip-inner">
+     <div class="testi-front">
+      <div class="testi-back-stat">+63%</div>
+      <div class="testi-back-label">rate increase after using the calculator</div>
+      <div class="testi-back-hint">$4/hr → $6.50/hr</div>
+     </div>
+     <div class="testi-back">
+      <div class="testi-quote">"I was charging $4/hr for social media work for two years. This calculator showed me my expense floor alone demands $6.50/hr. I raised my rate immediately."</div>
+      <div class="testi-author">
+       <div class="testi-avatar">MC</div>
+       <div>
+        <div class="testi-name">Maria C.</div>
+        <div class="testi-role">Social Media VA, Cebu</div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="testi-flip-hint">tap to reveal</div>
+   </div>
+   <div class="testi-flip" onclick="this.classList.toggle('flipped')">
+    <div class="testi-flip-inner">
+     <div class="testi-front">
+      <div class="testi-back-stat">+25%</div>
+      <div class="testi-back-label">more take-home after adjusting for platform fees</div>
+      <div class="testi-back-hint">$8/hr → $10/hr quoted</div>
+     </div>
+     <div class="testi-back">
+      <div class="testi-quote">"The platform gross-up feature alone is worth it. I never realized I needed to charge $10/hr on Fiverr just to take home $8. That math was killing my income."</div>
+      <div class="testi-author">
+       <div class="testi-avatar">JR</div>
+       <div>
+        <div class="testi-name">Jan R.</div>
+        <div class="testi-role">E-commerce VA, Manila</div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="testi-flip-hint">tap to reveal</div>
+   </div>
+   <div class="testi-flip" onclick="this.classList.toggle('flipped')">
+    <div class="testi-flip-inner">
+     <div class="testi-front">
+      <div class="testi-back-stat">100%</div>
+      <div class="testi-back-label">client retention after the rate conversation</div>
+      <div class="testi-back-hint">data-backed negotiation</div>
+     </div>
+     <div class="testi-back">
+      <div class="testi-quote">"Sent the results page to my client when they asked why I raised my rate. Seeing the breakdown niche, experience, expenses made it a real conversation, not a negotiation."</div>
+      <div class="testi-author">
+       <div class="testi-avatar">AL</div>
+       <div>
+        <div class="testi-name">Anna L.</div>
+        <div class="testi-role">Executive VA, Davao</div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="testi-flip-hint">tap to reveal</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   BLOG
+   ============================================================ -->
+<section id="blog">
+ <div class="container">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;">
+   <div>
+    <p class="eyebrow" style="margin-bottom:10px">From the blog</p>
+    <h2 class="display display-md">Pricing advice for Filipino VAs.</h2>
+   </div>
+   <a href="blog.html" class="btn-secondary" style="padding:9px 18px;font-size:13px;display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius);border:1px solid var(--border-2);color:var(--ink-3);transition:all 160px">
+    All articles
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10"/></svg>
+   </a>
+  </div>
+
+  <div class="blog-grid">
+
+   <!-- FEATURED -->
+   <div class="blog-card featured" onclick="openArticle('article-featured')">
+    <div class="blog-card-img">
+     <img src="assets/images/Blog1.png" alt="Why your $5/hr rate is costing you more than you think" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+    </div>
+    <div class="blog-card-body">
+     <div class="blog-tag">Rates & Pricing</div>
+     <h3 class="blog-title">Why your $5/hr rate is costing you more than you think</h3>
+     <p class="blog-excerpt">Underpricing isn't just about earning less it signals low confidence, attracts difficult clients, and makes it psychologically harder to raise your rate later. Here's the real math on what that "safe" low rate actually costs you over a year.</p>
+     <div class="blog-meta">
+      <div class="blog-meta-author">
+       <div class="blog-avatar">VR</div>
+       <span>Rei Team</span>
+      </div>
+      <span>5 min read</span>
+     </div>
+    </div>
+   </div>
+
+   <!-- SMALL CARDS COLUMN 1 -->
+   <div class="blog-col">
+    <div class="blog-card" onclick="openArticle('article-1')">
+     <div class="blog-card-img" style="aspect-ratio:16/7">
+      <img src="assets/images/Blog2.png" alt="OnlineJobs.ph vs Upwork" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+     </div>
+     <div class="blog-card-body">
+      <div class="blog-tag">Platform guide</div>
+      <h3 class="blog-title">OnlineJobs.ph vs Upwork: which platform pays Filipino VAs more?</h3>
+      <div class="blog-meta">
+       <div class="blog-meta-author">
+        <div class="blog-avatar">LC</div>
+        <span>Lena Cruz</span>
+       </div>
+       <span>4 min</span>
+      </div>
+     </div>
+    </div>
+
+    <div class="blog-card" onclick="openArticle('article-2')">
+     <div class="blog-card-img" style="aspect-ratio:16/7">
+      <img src="assets/images/Blog4.png" alt="Raise your rate mid-contract" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+     </div>
+     <div class="blog-card-body">
+      <div class="blog-tag">Career growth</div>
+      <h3 class="blog-title">When and how to raise your rate mid-contract without losing the client</h3>
+      <div class="blog-meta">
+       <div class="blog-meta-author">
+        <div class="blog-avatar">RD</div>
+        <span>Rico D.</span>
+       </div>
+       <span>6 min</span>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- SMALL CARDS COLUMN 2 -->
+   <div class="blog-col">
+    <div class="blog-card" onclick="openArticle('article-3')">
+     <div class="blog-card-img" style="aspect-ratio:16/7">
+      <img src="assets/images/Blog3.png" alt="QuickBooks certification" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+     </div>
+     <div class="blog-card-body">
+      <div class="blog-tag">Bookkeeping</div>
+      <h3 class="blog-title">QuickBooks certification: does it actually move the needle on your rate?</h3>
+      <div class="blog-meta">
+       <div class="blog-meta-author">
+        <div class="blog-avatar">AM</div>
+        <span>Ana M.</span>
+       </div>
+       <span>3 min</span>
+      </div>
+     </div>
+    </div>
+
+    <div class="blog-card" onclick="openArticle('article-4')">
+     <div class="blog-card-img" style="aspect-ratio:16/7;position:relative;overflow:hidden">
+      <img src="assets/images/Blog5.png" alt="The Complete Niche Guide" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+     </div>
+     <div class="blog-card-body">
+      <div class="blog-tag">Getting started</div>
+      <h3 class="blog-title">The complete niche guide: which VA specialty is worth your time in 2025?</h3>
+      <div class="blog-meta">
+       <div class="blog-meta-author">
+        <div class="blog-avatar">JT</div>
+        <span>Jake T.</span>
+       </div>
+       <span>8 min</span>
+      </div>
+     </div>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- ARTICLE OVERLAYS -->
+<div class="article-overlay" id="article-featured" onclick="if(event.target===this)closeArticle()">
+ <div class="article-detail">
+  <button class="article-close" onclick="closeArticle()">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>
+  <span class="detail-tag tag-rates">Rates & pricing</span>
+  <h1 class="detail-title">Why your $5/hr rate is costing you more than you think</h1>
+  <div class="detail-meta"><span>Aleana</span><span>March 2026</span><span>7 min read</span></div>
+  <div class="detail-body">
+   <p>VA freelancers in the Philippines often underprice themselves, but credible sources show why $5/hour costs more long-term than $9/hour. Here's a digestible breakdown with citations.</p>
+   <h2>Real 2026 VA Rates (PH Market)</h2>
+   <table>
+    <thead><tr><th>Level</th><th>Hourly Rate (USD)</th><th>Source</th></tr></thead>
+    <tbody>
+     <tr><td>Entry-level / general admin</td><td>$3 – $4.50</td><td>Smart Outsourcing</td></tr>
+     <tr><td>Average (PayScale survey)</td><td>~$2.05 (₱117)</td><td>PayScale</td></tr>
+     <tr><td>Mid-level / specialist</td><td>$4.50 – $7.50</td><td>VA Masters</td></tr>
+     <tr><td>Agency general VA</td><td>$6.50 – $15</td><td>VA Masters</td></tr>
+     <tr><td>Senior / executive</td><td>$7 – $10</td><td>Smart Outsourcing</td></tr>
+    </tbody>
+   </table>
+   <div class="callout"><strong>Key fact:</strong> $5/hour is entry-level average, not "safe." Agencies charge 2–3× more for vetted VAs.</div>
+   <h2>Why $5/Hour Costs More Than $9/Hour</h2>
+   <h3>1. Client Quality Trap</h3>
+   <p>Low prices signal "commodity" service, attracting hagglers and scope-creep clients. Higher rates ($9+) filter for value-focused businesses who pay on time and respect boundaries.</p>
+   <h3>2. Math Reality Check</h3>
+   <p>For $24k take-home ($2k/month):</p>
+   <ul>
+    <li><strong>$5/hr</strong> needs ~4,800 billable hours/year (impossible)</li>
+    <li><strong>$9/hr</strong> needs ~2,667 hours (doable at 50–60% billable)</li>
+   </ul>
+   <p><strong>Annual gap:</strong> $10k+ more revenue at the higher rate with the same effort.</p>
+   <h3>3. Psychological Anchor</h3>
+   <p>First impression sticks - clients resist 80% more when raising from a low base. Start at $9, hit $15 faster via testimonials.</p>
+   <h2>True Cost Formula (From Rei Logic)</h2>
+   <div class="formula-block">
+    <strong>Hourly Rate</strong> = (Desired Income + Expenses + Taxes at 25–30%) ÷ Billable Hours (~1,000/year)<br><br>
+    <strong>$5/hr example:</strong> Leaves ~$28/hr short = ~$28k lost/year.
+   </div>
+   <h2>Quick Action Steps</h2>
+   <ol>
+    <li><strong>Test in Rei:</strong> Input $24k goal, ₱50k expenses (~$900), 1,000 hours → Min $30/hr</li>
+    <li><strong>Raise 20% now:</strong> Pitch "premium speed tier" to current clients</li>
+    <li><strong>Niche up:</strong> Email VA = $10/hr; Notion specialist = $15/hr</li>
+   </ol>
+   <div class="callout"><strong>Bottom line:</strong> $9/hr VAs earn 2× more sustainably by attracting better clients and working fewer hours.</div>
+   <div class="ref-list">
+    <h3>References</h3>
+    <ul>
+     <li>VA Masters: PH VA rates $3–$25/hr (2026)</li>
+     <li>Smart Outsourcing: Entry $3–4.50, mid $4.50–7.50</li>
+     <li>PayScale: Avg ₱117/hr (~$2.05 USD)</li>
+     <li>1st Age Media: Hourly $5–$8 general admin</li>
+     <li>Pricing Psychology: Low rates attract bargain hunters</li>
+     <li>Contra VA Guide: Factor 25–30% taxes</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="article-overlay" id="article-1" onclick="if(event.target===this)closeArticle()">
+ <div class="article-detail">
+  <button class="article-close" onclick="closeArticle()">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>
+  <span class="detail-tag tag-platform">Platform guide</span>
+  <h1 class="detail-title">OnlineJobs.ph vs Upwork: Which Pays Filipino VAs More?</h1>
+  <div class="detail-meta"><span>Aleana</span><span>2026</span><span>7 min read</span></div>
+  <div class="detail-body">
+   <p>Filipino VAs often wonder: OnlineJobs.ph or Upwork-which keeps more money in your pocket? The side-by-side math shows a potential $200/month gap after fees.</p>
+   <h2>Platform Breakdown: What You Keep</h2>
+   <table>
+    <thead><tr><th>Metric</th><th>OnlineJobs.ph</th><th>Upwork</th></tr></thead>
+    <tbody>
+     <tr><td>Freelancer Fees</td><td>0% – Employers pay monthly subscription</td><td>20% first $500/client, then 10%</td></tr>
+     <tr><td>Example: $1,000 Gig</td><td>You keep $1,000</td><td>You keep $800–$900</td></tr>
+     <tr><td>Monthly for 20 hrs/wk @ $10/hr</td><td>$800/month full amount</td><td>$640–$720/month</td></tr>
+    </tbody>
+   </table>
+   <div class="callout"><strong>$200/month edge?</strong> OnlineJobs.ph wins on net pay for steady work ($800 vs $640 at $10/hr).</div>
+   <h2>Pro OnlineJobs.ph (for VAs):</h2>
+   <ul>
+    <li>Direct hires, long-term stability</li>
+    <li>No Connects/costs to apply</li>
+    <li>PH timezone-friendly employers</li>
+   </ul>
+   <h2>Pro Upwork:</h2>
+   <ul>
+    <li>More jobs, higher rates possible ($15+/hr specialists)</li>
+    <li>Skill badges boost visibility</li>
+   </ul>
+   <h2>Real Earnings Math</h2>
+   <div class="formula-block">
+    <strong>OnlineJobs.ph:</strong> $10/hr gross = $10 net → Hit goal at 2,000 hours<br>
+    <strong>Upwork:</strong> $12.50/hr gross (after 20% fee = $10 net) → Same goal, but more bidding time<br><br>
+    <strong>Monthly gap:</strong> OnlineJobs.ph VAs pocket ~$200 more on equivalent work due to zero fees.
+   </div>
+   <p><strong>Bottom line:</strong> OnlineJobs.ph often pays more net for Filipino VAs by skipping fees entirely.</p>
+   <div class="ref-list">
+    <h3>References</h3>
+    <ul>
+     <li>TrabahongOnline: Upwork 20% fees vs OnlineJobs.ph 0% for freelancers (2026)</li>
+     <li>OnlineJobs.ph Blog: No VA fees, employer subs only</li>
+     <li>GetClaude: Direct payments, $500–1,200/month VA range</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="article-overlay" id="article-2" onclick="if(event.target===this)closeArticle()">
+ <div class="article-detail">
+  <button class="article-close" onclick="closeArticle()">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>
+  <span class="detail-tag tag-career">Career growth</span>
+  <h1 class="detail-title">When and How to Raise Your Rate Mid-Contract Without Losing the Client</h1>
+  <div class="detail-meta"><span>Aleana</span><span>2026</span><span>8 min read</span></div>
+  <div class="detail-body">
+   <p>Raising your rate with an existing client is more about how you say it than what you ask for. Done right, 80–90% of clients stay.</p>
+   <h2>When to Raise: Perfect Timing Windows</h2>
+   <table>
+    <thead><tr><th>Best Times</th><th>Why It Works</th><th>Notice Period</th></tr></thead>
+    <tbody>
+     <tr><td>Project completion/milestone</td><td>Feels like a reset, not a surprise</td><td>2–4 weeks</td></tr>
+     <tr><td>Annual review (Jan/Sep)</td><td>Aligns with business planning cycles</td><td>30–60 days</td></tr>
+     <tr><td>6–12 months in</td><td>Gradual 10–20% bumps feel fair</td><td>30 days min</td></tr>
+     <tr><td>After adding value (new skills/tools)</td><td>Ties increase to results</td><td>2 weeks</td></tr>
+    </tbody>
+   </table>
+   <div class="callout"><strong>Avoid:</strong> Holidays, layoffs, or big client launches-check their calendar first.</div>
+   <h2>How to Frame It: Value-First Mindset</h2>
+   <p>Lead with results, not "I need more money." Remind them of ROI, then state the change confidently.</p>
+   <h3>Golden Rules:</h3>
+   <ul>
+    <li>Give advance notice (30+ days)</li>
+    <li>Offer lock-in at old rate for prepaid work</li>
+    <li>Scale scope if they push back (not discount)</li>
+    <li>10–20% max per raise to avoid shock</li>
+   </ul>
+   <h2>Exact Scripts That Work</h2>
+   <div class="formula-block">
+    <strong>Subject: Rate Update &amp; Upcoming Value Adds</strong><br><br>
+    Hi [Client],<br><br>
+    We've accomplished [specific result] together-excited for what's next!<br><br>
+    As part of my annual review, my rates will increase by 15% starting [date]. This reflects added tools/skills like [e.g., "Notion automation"].<br><br>
+    Current projects are grandfathered. You can lock in today's rate by prepaying Q2 scope.<br><br>
+    Happy to discuss!
+   </div>
+   <div class="callout"><strong>Your move:</strong> Pick your timing, customize a script, send today. Most clients say yes.</div>
+   <div class="ref-list">
+    <h3>References</h3>
+    <ul>
+     <li>FreelanceLifestyle: 30-day notice + value add = low churn</li>
+     <li>Reddit r/freelance: 10–20% every 6–12 months standard</li>
+     <li>WritingRevolt: Annual Jan 1 scripts with grandfathering</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="article-overlay" id="article-3" onclick="if(event.target===this)closeArticle()">
+ <div class="article-detail">
+  <button class="article-close" onclick="closeArticle()">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>
+  <span class="detail-tag tag-rates">Rates & pricing</span>
+  <h1 class="detail-title">QuickBooks Certification-Does It Actually Move the Needle on Your Hourly Rate?</h1>
+  <div class="detail-meta"><span>Aleana</span><span>2026</span><span>6 min read</span></div>
+  <div class="detail-body">
+   <p>Short answer: <strong>Yes, by $1–$3/hour average</strong> for bookkeeping VAs (e.g., $7.50 → $10.50/hr). Certification alone boosts credibility by 20–30%.</p>
+   <h2>QuickBooks Cert Impact: The Numbers</h2>
+   <table>
+    <thead><tr><th>Role/Level</th><th>No Cert</th><th>With Cert</th><th>Boost</th></tr></thead>
+    <tbody>
+     <tr><td>PH Bookkeeping VA (Entry)</td><td>$5–$8</td><td>$7.50–$14</td><td>+$2–$6/hr</td></tr>
+     <tr><td>US Bookkeeper (Freelance)</td><td>$16–$21</td><td>$21–$27</td><td>+$3–$6/hr</td></tr>
+     <tr><td>PH Specialist VA</td><td>$4–$7</td><td>$8–$12</td><td>+$2–$5/hr</td></tr>
+    </tbody>
+   </table>
+   <div class="callout"><strong>Key stat:</strong> Certified pros earn 21% more than uncertified peers.</div>
+   <h2>Why It Moves the Needle</h2>
+   <h3>Credibility Signal</h3>
+   <p>Cert verifies skills (ProAdvisor test passes), beating self-reported "QuickBooks experience."</p>
+   <h3>Niche Access</h3>
+   <p>Unlocks payroll, reconciliations, tax prep jobs at $10–$15/hr vs general admin $5/hr.</p>
+   <h2>ROI Breakdown</h2>
+   <ul>
+    <li><strong>Cost:</strong> $149–$349 (ProAdvisor exam/training)</li>
+    <li><strong>Payback:</strong> 50–100 hours at $2/hr boost</li>
+    <li><strong>Timeline:</strong> 1–3 months with updated profiles</li>
+   </ul>
+   <div class="callout"><strong>Action:</strong> Get certified, update Rei inputs (+20% rate), pitch 5 clients this week.</div>
+   <div class="ref-list">
+    <h3>References</h3>
+    <ul>
+     <li>VA Masters: Certified PH VAs $7.50–$14/hr vs $5–$8 uncertified</li>
+     <li>ONLC: 21% salary premium for certified</li>
+     <li>PayScale: Bookkeepers $16–$31/hr (+$6 avg with cert)</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="article-overlay" id="article-4" onclick="if(event.target===this)closeArticle()">
+ <div class="article-detail">
+  <button class="article-close" onclick="closeArticle()">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>
+  <span class="detail-tag tag-beginner">Getting started</span>
+  <h1 class="detail-title">The Complete Niche Guide-Which VA Specialty Is Worth Your Time in 2026?</h1>
+  <div class="detail-meta"><span>Aleana</span><span>2026</span><span>10 min read</span></div>
+  <div class="detail-body">
+   <p>With 9 main VA niches and dozens of sub-specializations, choosing wrong traps you in low-pay markets for years.</p>
+   <h2>Top 9 VA Niches Ranked by PH Market (2026)</h2>
+   <table>
+    <thead><tr><th>Niche</th><th>Hourly Rate (PH VA)</th><th>Demand</th></tr></thead>
+    <tbody>
+     <tr><td>1. Executive VA</td><td>$10–$20</td><td>⭐⭐⭐⭐⭐</td></tr>
+     <tr><td>2. E-commerce (Shopify/Amazon)</td><td>$8–$18</td><td>⭐⭐⭐⭐⭐</td></tr>
+     <tr><td>3. Social Media Manager</td><td>$7–$15</td><td>⭐⭐⭐⭐</td></tr>
+     <tr><td>4. Email Marketing</td><td>$8–$16</td><td>⭐⭐⭐⭐</td></tr>
+     <tr><td>5. Bookkeeping (QuickBooks)</td><td>$7–$14</td><td>⭐⭐⭐⭐</td></tr>
+     <tr><td>6. Real Estate VA</td><td>$6–$12</td><td>⭐⭐⭐</td></tr>
+     <tr><td>7. SEO/Content VA</td><td>$7–$15</td><td>⭐⭐⭐</td></tr>
+     <tr><td>8. Podcast/Online Course</td><td>$6–$13</td><td>⭐⭐⭐</td></tr>
+     <tr><td>9. General Admin</td><td>$4–$8</td><td>⭐⭐⭐</td></tr>
+    </tbody>
+   </table>
+   <div class="callout"><strong>Avg Monthly (20 hrs/wk):</strong> Top niches = ₱80k–₱150k; General = ₱40k–₱70k.</div>
+   <h2>How to Pick Your Niche (3-Step Framework)</h2>
+   <h3>1. Match Skills + Interest</h3>
+   <p>Love numbers? Bookkeeping. Creative? Social media.</p>
+   <h3>2. Check PH Demand</h3>
+   <ul>
+    <li><strong>High:</strong> E-com, exec, social (US/UK clients).</li>
+    <li>Run Rei: Top niches justify $12+/hr min.</li>
+   </ul>
+   <h3>3. Validate Market</h3>
+   <ul>
+    <li>OnlineJobs.ph/Upwork: Search "[niche] VA Philippines" jobs</li>
+    <li>Certs boost 20%: QuickBooks, Google Analytics</li>
+   </ul>
+   <h2>Action Plan</h2>
+   <ol>
+    <li>Pick 1–2 from table (skills match + $10+/hr)</li>
+    <li>Free training: YouTube/Udemy (2–4 weeks)</li>
+    <li>Profile: "Specialized [niche] VA | [cert/tool]"</li>
+    <li>Pitch: 10 jobs/week on OnlineJobs.ph/Upwork</li>
+   </ol>
+   <div class="callout"><strong>2026 Winner:</strong> E-com/Exec for PH VAs-demand exploding, rates 2x general.</div>
+   <div class="ref-list">
+    <h3>References</h3>
+    <ul>
+     <li>Hurupay: Top niches AI/e-com/exec VAs $10+/hr</li>
+     <li>WingAssistant: E-com $25–$60, social $20–$45 (global)</li>
+     <li>VirtualStaff.ph: Experienced/specialized ₱67k–₱140k/month</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- ============================================================
+   CTA
+   ============================================================ -->
+<section>
+ <div class="container">
+  <div class="cta-inner">
+   <svg class="cta-bg-lines" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice">
+    <circle cx="500" cy="200" r="380" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="500" cy="200" r="260" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="500" cy="200" r="140" fill="none" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1000" y2="200" stroke="white" stroke-width="0.5"/>
+    <line x1="500" y1="0" x2="500" y2="400" stroke="white" stroke-width="0.5"/>
+   </svg>
+
+   <p class="eyebrow">Free to use, always</p>
+   <h2 class="cta-title">Stop leaving money<br><em style="font-style:italic;opacity:0.6">on the table.</em></h2>
+   <p class="cta-body">Thousands of Filipino VAs are overdue for a rate conversation. Yours starts here no account, no email, no nonsense.</p>
+
+   <div class="cta-btns">
+    <button class="btn-cta-primary" onclick="window.location.href='calculator.html'">
+     Calculate my rate
+    </button>
+    <button class="btn-cta-secondary" onclick="if(navigator.share){navigator.share({title:'Rei PH',text:'Free rate calculator for Filipino VAs know what to charge.',url:window.location.href})}else{navigator.clipboard.writeText(window.location.href);alert('Link copied!')}">Share with my VA friends</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============================================================
+   FOOTER
+   ============================================================ -->
+<footer>
+ <div class="container">
+  <div class="footer-inner">
+   <div>
+    <div class="footer-brand-name">Rei</div>
+    <p class="footer-brand-desc">Rate Engine Intelligence — the rate calculator built for Filipino virtual assistants. Know your worth, charge accordingly.</p>
+   </div>
+   <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+     <li><a href="calculator.html">Calculator</a></li>
+     <li><a href="niche-benchmarks.html">Niche benchmarks</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Resources</div>
+    <ul class="footer-links">
+     <li><a href="blog.html">Blog</a></li>
+     <li><a href="va-pricing-guide.html">VA Pricing guide</a></li>
+     <li><a href="platform-fee-guide.html">Platform fee guide</a></li>
+     <li><a href="rate-increase-script.html">Rate increase script</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="privacy.html">Privacy policy</a></li>
+     <li><a href="terms.html">Terms of use</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="footer-bottom">
+   <span>© 2025–2026 Rei Philippines. Benchmark estimates only.</span>
+   <div class="footer-bottom-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+// Mobile nav
+function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navHamburger').classList.add('open');document.body.style.overflow='hidden';}
+function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+
+function toggleTheme() {
+ const html = document.documentElement;
+ const current = html.getAttribute('data-theme');
+ html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+ localStorage.setItem('va-theme', html.getAttribute('data-theme'));
+}
+
+// Persist theme across reloads
+(function() {
+ const saved = localStorage.getItem('va-theme');
+ if (saved) document.documentElement.setAttribute('data-theme', saved);
+ else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+ }
+})();
+
+function openArticle(id) {
+ const el = document.getElementById(id);
+ if (el) {
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+ }
+}
+
+function closeArticle() {
+ document.querySelectorAll('.article-overlay.open').forEach(function(o) { o.classList.remove('open'); });
+ document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+ if (e.key === 'Escape') closeArticle();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>!function(){var s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}();</script>
+<title>Privacy Policy - Rei Philippines</title>
+<meta name="description" content="Rei collects almost nothing. Your financial data never leaves your browser. No cookies, no tracking, no analytics.">
+<link rel="icon" href="assets/images/Logo.gif" type="image/gif">
+<meta property="og:title" content="Privacy Policy - Rei Philippines">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F8F7FC;--bg-3:#F0EEF8;--ink:#111110;--ink-2:#3C3C3A;--ink-3:#7A7A77;--ink-4:#B8B8B4;--border:rgba(0,0,0,0.08);--border-2:rgba(0,0,0,0.14);--accent-bg:#7C3AED;--accent-fg:#FFFFFF;--green:#7C3AED;--green-bg:#EDE9FE;--green-fg:#6D28D9;--serif:'Times New Roman',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1);--radius:10px;--radius-lg:16px;--radius-xl:24px;}
+[data-theme="dark"]{--bg:#0A0A0A;--bg-2:#141414;--bg-3:#1E1E1E;--ink:#F0EFEA;--ink-2:#C4C3BC;--ink-3:#7A7A75;--ink-4:#484846;--border:rgba(255,255,255,0.08);--border-2:rgba(255,255,255,0.14);--accent-bg:#A78BFA;--accent-fg:#0A0A0A;--green:#A78BFA;--green-bg:rgba(124,58,237,0.2);--green-fg:#C4B5FD;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;transition:background 280ms var(--ease),color 280ms var(--ease);}
+a{color:inherit;text-decoration:none;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);transition:background 280ms var(--ease);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1120px;margin:0 auto;padding:0 32px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.nav-logo-text{font-family:var(--serif);font-size:19px;color:var(--accent-bg);letter-spacing:-0.02em;font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:13.5px;color:var(--ink-3);transition:color 160ms;}
+.nav-links a:hover{color:var(--accent-bg);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.theme-toggle{width:52px;height:28px;border-radius:14px;background:var(--bg-3);border:1px solid var(--border-2);cursor:pointer;position:relative;transition:background 280ms,border-color 280ms;}
+.theme-toggle-dot{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--ink);top:3px;left:3px;transition:transform 280ms var(--ease);display:flex;align-items:center;justify-content:center;}
+[data-theme="dark"] .theme-toggle-dot{transform:translateX(24px);}
+.icon-sun{position:absolute;transition:opacity 200ms;opacity:1;}
+.icon-moon{position:absolute;transition:opacity 200ms;opacity:0;}
+[data-theme="dark"] .icon-sun{opacity:0;}
+[data-theme="dark"] .icon-moon{opacity:1;}
+.btn-nav{padding:9px 20px;border-radius:var(--radius);font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:none;background:var(--accent-bg);color:var(--accent-fg);transition:opacity 160ms;}
+.btn-nav:hover{opacity:0.85;}
+@media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}.btn-nav{display:none;}}
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border-2);background:transparent;cursor:pointer;color:var(--ink);transition:background 160ms;}
+.nav-hamburger:hover{background:var(--bg-3);}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:currentColor;transition:transform 280ms,opacity 200ms;}
+.nav-hamburger span+span{margin-top:4px;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);}
+.nav-drawer.open{display:block;}
+.nav-drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--bg);border-left:1px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:8px;animation:slideInRight 280ms var(--ease) both;}
+@keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.nav-drawer-close{align-self:flex-end;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:8px;transition:all 160ms;}
+.nav-drawer-close:hover{background:var(--bg-2);color:var(--ink);}
+.nav-drawer-links{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.nav-drawer-links a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--border);transition:color 160ms;}
+.nav-drawer-links a:hover{color:var(--accent-bg);}
+.nav-drawer-links li:last-child a{border-bottom:none;}
+.nav-drawer-cta{margin-top:16px;}
+.nav-drawer-cta .btn-nav{width:100%;text-align:center;}
+.container{max-width:1120px;margin:0 auto;padding:0 32px;}
+@media(max-width:600px){.container{padding:0 20px;}}
+
+.page-header{padding:72px 0 48px;border-bottom:1px solid var(--border);}
+.page-title{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
+.page-subtitle{font-size:16px;color:var(--ink-3);max-width:560px;line-height:1.7;}
+.page-body{padding:48px 0 72px;max-width:720px;}
+.page-body h2{font-family:var(--serif);font-size:24px;margin:36px 0 14px;letter-spacing:-0.02em;}
+.page-body h2:first-child{margin-top:0;}
+.page-body p{color:var(--ink-2);margin-bottom:16px;line-height:1.75;}
+.page-body ul,.page-body ol{color:var(--ink-2);margin:0 0 16px 20px;line-height:1.75;}
+.page-body li{margin-bottom:8px;}
+.page-body strong{color:var(--ink);}
+.section-divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
+
+footer{padding:48px 0 36px;border-top:1px solid var(--border);}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand-name{font-family:var(--serif);font-size:20px;margin-bottom:10px;color:var(--ink);font-style:italic;}
+.footer-brand-desc{font-size:13px;color:var(--ink-3);line-height:1.6;max-width:240px;}
+.footer-col-title{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);margin-bottom:14px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links a{font-size:13.5px;color:var(--ink-3);transition:color 150ms;}.footer-links a:hover{color:var(--accent-bg);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-4);}
+.footer-bottom-links{display:flex;gap:20px;}.footer-bottom-links a{color:var(--ink-4);transition:color 150ms;}
+.footer-bottom-links a:hover{color:var(--ink-3);}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr;gap:32px;}.footer-bottom{flex-direction:column;gap:10px;text-align:center;}}
+</style>
+</head>
+<body>
+<nav>
+ <div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+   <div class="nav-logo-mark">
+    <img src="assets/images/Logo.gif" alt="Rei" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+   </div>
+   <span class="nav-logo-text">Rei</span>
+  </a>
+  <ul class="nav-links">
+   <li><a href="index.html#features">Features</a></li>
+   <li><a href="calculator.html">Calculator</a></li>
+   <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <div class="theme-toggle-dot">
+     <svg class="icon-sun" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-fg)" stroke-width="1.4" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="2.2"/><path d="M5.5 1v1M5.5 9v1M1 5.5H2M9 5.5h1M2.2 2.2l.7.7M8.1 8.1l.7.7M8.8 2.2l-.7.7M2.9 8.1l-.7.7"/></svg>
+     <svg class="icon-moon" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-bg)" stroke-width="1.4" stroke-linecap="round"><path d="M9.5 6.8A4.5 4.5 0 1 1 4.2 1.5a3.5 3.5 0 0 0 5.3 5.3z"/></svg>
+    </div>
+   </button>
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" onclick="openNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+ </div>
+</nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" onclick="if(event.target===this)closeNav()">
+ <div class="nav-drawer-panel">
+  <button class="nav-drawer-close" onclick="closeNav()" aria-label="Close menu">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+   <li><a href="index.html#features" onclick="closeNav()">Features</a></li>
+   <li><a href="calculator.html" onclick="closeNav()">Calculator</a></li>
+   <li><a href="blog.html" onclick="closeNav()">Blog</a></li>
+   <li><a href="about.html" onclick="closeNav()">About</a></li>
+   <li><a href="contact.html" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-cta">
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+ </div>
+</div>
+
+<div class="container">
+ <div class="page-header">
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-subtitle"><strong>Short version:</strong> Rei collects almost nothing. Your financial data never leaves your browser. We don't track you, we don't sell anything, and we don't use cookies.</p>
+ </div>
+
+ <div class="page-body">
+  <p><strong>Last updated:</strong> March 2026</p>
+
+  <hr class="section-divider">
+
+  <h2>Your Calculator Data Stays on Your Device</h2>
+  <p>Rei is a client-side calculator. Every number you enter - income goals, monthly expenses, hourly rates, working hours - is processed entirely in your browser. None of it is sent to our servers, stored in a database, or transmitted anywhere. When you close the tab, the data is gone. We never see it, and we couldn't retrieve it even if someone asked us to.</p>
+  <p>This is by design, not by accident. Your financial information is personal. We built Rei so that using it requires zero trust in us with your data - because we never touch it.</p>
+
+  <hr class="section-divider">
+
+  <h2>Local Storage</h2>
+  <p>We use your browser's localStorage for one thing: remembering your theme preference (light or dark mode). That's it. No personal information, no session data, no calculator inputs. You can clear it anytime through your browser settings with no impact on how Rei works.</p>
+
+  <hr class="section-divider">
+
+  <h2>Newsletter</h2>
+  <p>If you choose to subscribe to our newsletter, we collect your email address for one purpose: sending you monthly rate advice, market updates, and new tool announcements. That's the full list.</p>
+  <p>We will never share, sell, rent, or trade your email address with any third party - no exceptions, no "trusted partners," no fine print that says otherwise. You can unsubscribe at any time using the link at the bottom of every email, and we'll remove your address promptly.</p>
+
+  <hr class="section-divider">
+
+  <h2>Cookies and Tracking</h2>
+  <p>Rei does not use cookies. We do not run third-party analytics (no Google Analytics, no Hotjar, no Mixpanel). We do not load advertising networks, tracking pixels, retargeting scripts, or any code that follows you across the internet. There is nothing on our site that watches what you click, how long you stay, or where you go next.</p>
+
+  <hr class="section-divider">
+
+  <h2>Third-Party Services</h2>
+  <p>We load Google Fonts (Montserrat) for typography. This means your browser makes a request to Google's font servers when you visit Rei. Google's own privacy policy governs how they handle that request. Beyond font delivery, no other third-party services are embedded on our pages.</p>
+
+  <hr class="section-divider">
+
+  <h2>Data Security</h2>
+  <p>Because we don't collect personal data beyond optional newsletter subscriptions, our security surface is minimal by design. The newsletter email addresses we do hold are stored securely, never exposed publicly, and accessible only to the Rei team for the sole purpose of sending the newsletter.</p>
+
+  <hr class="section-divider">
+
+  <h2>Children's Privacy</h2>
+  <p>Rei is not directed at children under 13. We do not knowingly collect information from anyone under 13. If we become aware that a child under 13 has subscribed to our newsletter, we will delete their email address immediately.</p>
+
+  <hr class="section-divider">
+
+  <h2>Changes to This Policy</h2>
+  <p>If we update this policy, we'll post the revised version on this page with a new "last updated" date. If a change is significant - for example, if we ever start collecting new types of data - we'll announce it through our newsletter and on the site before it takes effect. Continued use of Rei after a posted update constitutes acceptance of the revised policy.</p>
+
+  <hr class="section-divider">
+
+  <h2>Questions</h2>
+  <p>If you have questions about this policy or how Rei handles data, reach out through our <a href="contact.html" style="color:var(--accent-bg);"><strong>Contact</strong></a> page.</p>
+ </div>
+</div>
+
+<footer>
+ <div class="container">
+  <div class="footer-inner">
+   <div>
+    <div class="footer-brand-name">Rei</div>
+    <p class="footer-brand-desc">Rate Engine Intelligence — the rate calculator built for Filipino virtual assistants. Know your worth, charge accordingly.</p>
+   </div>
+   <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+     <li><a href="calculator.html">Calculator</a></li>
+     <li><a href="niche-benchmarks.html">Niche benchmarks</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Resources</div>
+    <ul class="footer-links">
+     <li><a href="blog.html">Blog</a></li>
+     <li><a href="va-pricing-guide.html">VA Pricing guide</a></li>
+     <li><a href="platform-fee-guide.html">Platform fee guide</a></li>
+     <li><a href="rate-increase-script.html">Rate increase script</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="privacy.html">Privacy policy</a></li>
+     <li><a href="terms.html">Terms of use</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2025–2026 Rei Philippines. Benchmark estimates only.</span>
+   <div class="footer-bottom-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+
+ // Mobile nav
+ function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navHamburger').classList.add('open');document.body.style.overflow='hidden';}
+ function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');document.body.style.overflow='';}
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+ function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');localStorage.setItem('va-theme',h.getAttribute('data-theme'));}
+(function(){const s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');})();
+</script>
+</body>
+</html>

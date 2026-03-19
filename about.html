@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>!function(){var s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}();</script>
+<title>About Rei - Rate Engine Intelligence for Filipino VAs</title>
+<meta name="description" content="Rei is a free, data-backed rate calculator built for Philippine-based virtual assistants. Learn why it was built and how it helps Filipino VAs price with confidence.">
+<link rel="icon" href="assets/images/Logo.gif" type="image/gif">
+<meta property="og:title" content="About Rei - Rate Engine Intelligence">
+<meta property="og:description" content="Free rate calculator built for Filipino VAs. Know your worth, charge accordingly.">
+<meta property="og:image" content="assets/images/Blog1.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--bg-2:#F8F7FC;--bg-3:#F0EEF8;--ink:#111110;--ink-2:#3C3C3A;--ink-3:#7A7A77;--ink-4:#B8B8B4;--border:rgba(0,0,0,0.08);--border-2:rgba(0,0,0,0.14);--accent-bg:#7C3AED;--accent-fg:#FFFFFF;--green:#7C3AED;--green-bg:#EDE9FE;--green-fg:#6D28D9;--serif:'Times New Roman',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1);--radius:10px;--radius-lg:16px;--radius-xl:24px;}
+[data-theme="dark"]{--bg:#0A0A0A;--bg-2:#141414;--bg-3:#1E1E1E;--ink:#F0EFEA;--ink-2:#C4C3BC;--ink-3:#7A7A75;--ink-4:#484846;--border:rgba(255,255,255,0.08);--border-2:rgba(255,255,255,0.14);--accent-bg:#A78BFA;--accent-fg:#0A0A0A;--green:#A78BFA;--green-bg:rgba(124,58,237,0.2);--green-fg:#C4B5FD;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;transition:background 280ms var(--ease),color 280ms var(--ease);}
+a{color:inherit;text-decoration:none;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);transition:background 280ms var(--ease);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1120px;margin:0 auto;padding:0 32px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.nav-logo-text{font-family:var(--serif);font-size:19px;color:var(--accent-bg);letter-spacing:-0.02em;font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:13.5px;color:var(--ink-3);transition:color 160ms;}
+.nav-links a:hover{color:var(--accent-bg);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.theme-toggle{width:52px;height:28px;border-radius:14px;background:var(--bg-3);border:1px solid var(--border-2);cursor:pointer;position:relative;transition:background 280ms,border-color 280ms;}
+.theme-toggle-dot{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--ink);top:3px;left:3px;transition:transform 280ms var(--ease);display:flex;align-items:center;justify-content:center;}
+[data-theme="dark"] .theme-toggle-dot{transform:translateX(24px);}
+.icon-sun{position:absolute;transition:opacity 200ms;opacity:1;}
+.icon-moon{position:absolute;transition:opacity 200ms;opacity:0;}
+[data-theme="dark"] .icon-sun{opacity:0;}
+[data-theme="dark"] .icon-moon{opacity:1;}
+.btn-nav{padding:9px 20px;border-radius:var(--radius);font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:none;background:var(--accent-bg);color:var(--accent-fg);transition:opacity 160ms;}
+.btn-nav:hover{opacity:0.85;}
+@media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}.btn-nav{display:none;}}
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border-2);background:transparent;cursor:pointer;color:var(--ink);transition:background 160ms;}
+.nav-hamburger:hover{background:var(--bg-3);}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:currentColor;transition:transform 280ms,opacity 200ms;}
+.nav-hamburger span+span{margin-top:4px;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);}
+.nav-drawer.open{display:block;}
+.nav-drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--bg);border-left:1px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:8px;animation:slideInRight 280ms var(--ease) both;}
+@keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.nav-drawer-close{align-self:flex-end;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:8px;transition:all 160ms;}
+.nav-drawer-close:hover{background:var(--bg-2);color:var(--ink);}
+.nav-drawer-links{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.nav-drawer-links a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--border);transition:color 160ms;}
+.nav-drawer-links a:hover{color:var(--accent-bg);}
+.nav-drawer-links li:last-child a{border-bottom:none;}
+.nav-drawer-cta{margin-top:16px;}
+.nav-drawer-cta .btn-nav{width:100%;text-align:center;}
+.container{max-width:1120px;margin:0 auto;padding:0 32px;}
+@media(max-width:600px){.container{padding:0 20px;}}
+
+.page-header{padding:72px 0 48px;border-bottom:1px solid var(--border);}
+.page-title{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-0.03em;margin-bottom:12px;}
+.page-subtitle{font-size:16px;color:var(--ink-3);max-width:560px;line-height:1.7;}
+.page-body{padding:48px 0 72px;max-width:720px;}
+.page-body h2{font-family:var(--serif);font-size:24px;margin:36px 0 14px;letter-spacing:-0.02em;}
+.page-body h2:first-child{margin-top:0;}
+.page-body p{color:var(--ink-2);margin-bottom:16px;line-height:1.75;}
+.page-body ul,.page-body ol{color:var(--ink-2);margin:0 0 16px 20px;line-height:1.75;}
+.page-body li{margin-bottom:8px;}
+.page-body strong{color:var(--ink);}
+.section-divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
+
+footer{padding:48px 0 36px;border-top:1px solid var(--border);}
+.footer-inner{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand-name{font-family:var(--serif);font-size:20px;margin-bottom:10px;color:var(--ink);font-style:italic;}
+.footer-brand-desc{font-size:13px;color:var(--ink-3);line-height:1.6;max-width:240px;}
+.footer-col-title{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);margin-bottom:14px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links a{font-size:13.5px;color:var(--ink-3);transition:color 150ms;}.footer-links a:hover{color:var(--accent-bg);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-4);}
+.footer-bottom-links{display:flex;gap:20px;}.footer-bottom-links a{color:var(--ink-4);transition:color 150ms;}
+.footer-bottom-links a:hover{color:var(--ink-3);}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr;gap:32px;}.footer-bottom{flex-direction:column;gap:10px;text-align:center;}}
+</style>
+</head>
+<body>
+<nav>
+ <div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+   <div class="nav-logo-mark">
+    <img src="assets/images/Logo.gif" alt="Rei" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+   </div>
+   <span class="nav-logo-text">Rei</span>
+  </a>
+  <ul class="nav-links">
+   <li><a href="index.html#features">Features</a></li>
+   <li><a href="calculator.html">Calculator</a></li>
+   <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <div class="theme-toggle-dot">
+     <svg class="icon-sun" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-fg)" stroke-width="1.4" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="2.2"/><path d="M5.5 1v1M5.5 9v1M1 5.5H2M9 5.5h1M2.2 2.2l.7.7M8.1 8.1l.7.7M8.8 2.2l-.7.7M2.9 8.1l-.7.7"/></svg>
+     <svg class="icon-moon" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-bg)" stroke-width="1.4" stroke-linecap="round"><path d="M9.5 6.8A4.5 4.5 0 1 1 4.2 1.5a3.5 3.5 0 0 0 5.3 5.3z"/></svg>
+    </div>
+   </button>
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" onclick="openNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+ </div>
+</nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" onclick="if(event.target===this)closeNav()">
+ <div class="nav-drawer-panel">
+  <button class="nav-drawer-close" onclick="closeNav()" aria-label="Close menu">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+   <li><a href="index.html#features" onclick="closeNav()">Features</a></li>
+   <li><a href="calculator.html" onclick="closeNav()">Calculator</a></li>
+   <li><a href="blog.html" onclick="closeNav()">Blog</a></li>
+   <li><a href="about.html" onclick="closeNav()">About</a></li>
+   <li><a href="contact.html" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-cta">
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+ </div>
+</div>
+
+<div class="container">
+ <div class="page-header">
+  <h1 class="page-title">About <em>Rei</em></h1>
+  <p class="page-subtitle"><em>Rei</em> — Rate Engine Intelligence — is a free, data-backed rate calculator built specifically for Philippine-based virtual assistants. It exists because too many skilled VAs are pricing based on guesswork, fear, or outdated advice - and leaving real money on the table every month.</p>
+ </div>
+
+ <div class="page-body">
+  <h2>The Problem We're Solving</h2>
+  <p>There's a pricing gap in the Filipino VA industry, and it's not about talent. It's about information.</p>
+  <p>Thousands of skilled VAs are stuck accepting $3–$5/hr - not because that's what they're worth, but because they've never had a clear, honest framework for figuring out what they <em>should</em> charge. The resources that do exist are either too generic (global freelancing advice that ignores Philippine cost structures), too vague ("charge what you're worth" without defining what that means), or quietly designed to keep rates low so agencies and clients benefit from the gap.</p>
+  <p>Rei was built to close that gap. One VA at a time, one rate decision at a time.</p>
+
+  <hr class="section-divider">
+
+  <h2>What Rei Actually Does</h2>
+  <p>Most rate calculators give you a single number based on your niche and call it done. Rei goes deeper. It looks at your real situation:</p>
+  <ul>
+   <li><strong>Your monthly expenses in PHP</strong> - rent, utilities, food, dependents, the actual cost of your life, not a national average</li>
+   <li><strong>Your target income</strong> - what you need to earn to not just survive but build savings, invest in skills, and plan ahead</li>
+   <li><strong>Your available working hours</strong> - accounting for the difference between hours worked and hours you can actually bill</li>
+   <li><strong>Your niche and experience level</strong> - benchmarked against current market data from OnlineJobs.ph, Upwork, and industry surveys</li>
+   <li><strong>Platform fees and withdrawal costs</strong> - the hidden 10–20% that most VAs forget to price around</li>
+  </ul>
+  <p>From those inputs, Rei generates three numbers - not one:</p>
+  <ul>
+   <li><strong>A floor rate</strong> - the minimum you can charge and still cover your costs. You should never quote below this.</li>
+   <li><strong>A recommended rate</strong> - the rate that reflects your skills, experience, and market position. This is where most of your proposals should land.</li>
+   <li><strong>A premium rate</strong> - the ceiling for your current profile. This is the rate you grow into as you stack certifications, build your portfolio, and earn client trust.</li>
+  </ul>
+  <p>Three numbers instead of one because pricing isn't a single decision - it's a range you operate within depending on the client, the platform, and the scope of work.</p>
+
+  <hr class="section-divider">
+
+  <h2>Who This Is For</h2>
+  <p>Rei is for Filipino virtual assistants at every stage who are tired of guessing and ready to price with intention.</p>
+  <p><strong>If you're just starting out</strong> - you need a floor rate before you accept your first client. Without one, you'll say yes to whatever number someone offers, and that number will anchor every rate conversation you have for the next year. Rei gives you a data-backed starting point so your first rate isn't also your lowest.</p>
+  <p><strong>If you're mid-career and suspect you're undercharging</strong> - you probably are. The VAs who raise their rates aren't necessarily more skilled than you. They just have better information about what the market will pay. Rei shows you the gap between where you are and where you could be.</p>
+  <p><strong>If you're switching niches</strong> - your rate resets when your niche changes. A general admin VA moving into bookkeeping or e-commerce needs to recalibrate. Rei benchmarks your new niche so you don't carry an old rate into a higher-value market.</p>
+  <p><strong>If you're about to ask for a raise</strong> - you need a specific number, not a feeling. Rei gives you one you can defend with data. Pair it with the <a href="rate-increase-script.html" style="color:var(--accent-bg);">Rate Increase Scripts</a> and the conversation gets a lot easier.</p>
+
+  <hr class="section-divider">
+
+  <h2>Built by Aleana</h2>
+  <p>Rei was created by Aleana - a Filipino builder, VA, and systems-focused operator who has watched the underpricing problem from the inside for years.</p>
+  <p>This isn't a tool built from theory. It's built from real experience running VA workflows, real conversations with clients about rates, and real market data tracked over time. Every formula, benchmark, and recommendation inside Rei reflects how the industry actually works - not how blog posts say it should.</p>
+  <p>The tool is continuously updated using current platform data, freelancer community insights, and rate trends across the most active VA niches. When the market moves, Rei moves with it.</p>
+
+  <hr class="section-divider">
+
+  <h2>Why This Matters</h2>
+  <p>When a Filipino VA charges $5/hr for work that the market values at $12, the gap doesn't just cost them money. It costs them better clients - because premium clients associate low rates with low quality. It costs them career momentum - because razor-thin margins leave no room to invest in tools, certifications, or time off. And it costs the broader Filipino VA community - because every underpriced proposal pulls the market expectation down for everyone.</p>
+  <p>Rei exists to push that expectation back up.</p>
+  <p>Better pricing leads to better clients. Better clients lead to better work. Better work leads to a career you can sustain and grow - not one you're just surviving.</p>
+  <p>This is bigger than a calculator. It's about raising the standard for Filipino virtual assistants, one rate at a time.</p>
+ </div>
+</div>
+
+<footer>
+ <div class="container">
+  <div class="footer-inner">
+   <div>
+    <div class="footer-brand-name">Rei</div>
+    <p class="footer-brand-desc">Rate Engine Intelligence — the rate calculator built for Filipino virtual assistants. Know your worth, charge accordingly.</p>
+   </div>
+   <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+     <li><a href="calculator.html">Calculator</a></li>
+     <li><a href="niche-benchmarks.html">Niche benchmarks</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Resources</div>
+    <ul class="footer-links">
+     <li><a href="blog.html">Blog</a></li>
+     <li><a href="va-pricing-guide.html">VA Pricing guide</a></li>
+     <li><a href="platform-fee-guide.html">Platform fee guide</a></li>
+     <li><a href="rate-increase-script.html">Rate increase script</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="privacy.html">Privacy policy</a></li>
+     <li><a href="terms.html">Terms of use</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2025–2026 Rei Philippines. Benchmark estimates only.</span>
+   <div class="footer-bottom-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+
+ // Mobile nav
+ function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navHamburger').classList.add('open');document.body.style.overflow='hidden';}
+ function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');document.body.style.overflow='';}
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+ function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');localStorage.setItem('va-theme',h.getAttribute('data-theme'));}
+(function(){const s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');})();
+</script>
+</body>
+</html>

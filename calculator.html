@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>!function(){var s=localStorage.getItem('va-theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}();</script>
+<title>Rei - Rate Calculator | Filipino VA Hourly Rate Tool</title>
+<meta name="description" content="Calculate your freelance hourly rate as a Filipino VA. Enter your monthly expenses, niche, experience level and platform — get your survival, fair market, and asking rate instantly.">
+<link rel="icon" href="assets/images/Logo.gif" type="image/gif">
+<meta property="og:title" content="Rei Rate Calculator">
+<meta property="og:description" content="Get a personalized hourly rate for Filipino virtual assistants. Free, browser-based, no account required.">
+<meta property="og:image" content="assets/images/Blog1.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+:root {
+  --bg: #FFFFFF;
+  --bg-2: #F8F7FC;
+  --bg-3: #F0EEF8;
+  --ink: #111110;
+  --ink-2: #3C3C3A;
+  --ink-3: #7A7A77;
+  --ink-4: #B8B8B4;
+  --border: rgba(0,0,0,0.08);
+  --border-2: rgba(0,0,0,0.14);
+  --accent: #7C3AED;
+  --accent-bg: #7C3AED;
+  --accent-fg: #FFFFFF;
+  --green: #7C3AED;
+  --green-bg: #EDE9FE;
+  --green-fg: #6D28D9;
+  --amber: #92610A;
+  --amber-bg: #FDF4E3;
+  --red: #B03030;
+  --red-bg: #FDEAEA;
+  --serif: 'Times New Roman', Georgia, serif;
+  --sans: 'Montserrat', system-ui, sans-serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+[data-theme="dark"] {
+  --bg: #0A0A0A;
+  --bg-2: #141414;
+  --bg-3: #1E1E1E;
+  --ink: #F0EFEA;
+  --ink-2: #C4C3BC;
+  --ink-3: #7A7A75;
+  --ink-4: #484846;
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --accent-bg: #A78BFA;
+  --accent-fg: #0A0A0A;
+  --green: #A78BFA;
+  --green-bg: rgba(124,58,237,0.2);
+  --green-fg: #C4B5FD;
+  --amber: #FCD34D;
+  --amber-bg: rgba(120,80,0,0.25);
+  --red: #F87171;
+  --red-bg: rgba(176,48,48,0.2);
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: background 280ms var(--ease), color 280ms var(--ease);
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: background 280ms var(--ease);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.nav-logo-text {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--accent-bg);
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  transition: color 160ms;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent-bg); }
+@media(max-width:900px) { .nav-links { display: none; } .nav-hamburger { display: flex; } .btn-nav { display: none; } }
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--border-2);background:transparent;cursor:pointer;color:var(--ink);transition:background 160ms;}
+.nav-hamburger:hover{background:var(--bg-3);}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:currentColor;transition:transform 280ms,opacity 200ms;}
+.nav-hamburger span+span{margin-top:4px;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);}
+.nav-drawer.open{display:block;}
+.nav-drawer-panel{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--bg);border-left:1px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:8px;animation:slideInRight 280ms var(--ease) both;}
+@keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.nav-drawer-close{align-self:flex-end;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-2);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);margin-bottom:8px;transition:all 160ms;}
+.nav-drawer-close:hover{background:var(--bg-2);color:var(--ink);}
+.nav-drawer-links{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.nav-drawer-links a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--border);transition:color 160ms;}
+.nav-drawer-links a:hover{color:var(--accent-bg);}
+.nav-drawer-links li:last-child a{border-bottom:none;}
+.nav-drawer-cta{margin-top:16px;}
+.nav-drawer-cta .btn-nav{width:100%;text-align:center;}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  cursor: pointer;
+  position: relative;
+  transition: background 280ms, border-color 280ms;
+}
+.theme-toggle-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  top: 3px;
+  left: 3px;
+  transition: transform 280ms var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-theme="dark"] .theme-toggle-dot { transform: translateX(24px); }
+.icon-sun { position: absolute; transition: opacity 200ms; opacity: 1; }
+.icon-moon { position: absolute; transition: opacity 200ms; opacity: 0; }
+[data-theme="dark"] .icon-sun { opacity: 0; }
+[data-theme="dark"] .icon-moon { opacity: 1; }
+.btn-nav {
+  padding: 9px 20px;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: var(--accent-bg);
+  color: var(--accent-fg);
+  transition: opacity 160ms;
+}
+.btn-nav:hover { opacity: 0.85; }
+
+/* LAYOUT */
+.shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+  padding: 36px 24px 36px 28px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.wordmark {
+  margin-bottom: 44px;
+}
+
+.wordmark-top {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+  font-style: italic;
+}
+
+.wordmark-sub {
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.nav-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-step {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 140ms;
+}
+
+.nav-step:hover { background: var(--bg-2); }
+.nav-step.active { background: var(--bg-2); }
+
+.step-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+  flex-shrink: 0;
+  transition: all 140ms;
+}
+
+.nav-step.active .step-dot {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.nav-step.done .step-dot {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.step-text { flex: 1; }
+.step-name { font-size: 12.5px; font-weight: 500; color: var(--ink-3); }
+.step-hint { font-size: 11px; color: var(--ink-4); margin-top: 1px; }
+.nav-step.active .step-name { color: var(--ink); }
+.nav-step.done .step-name { color: var(--ink-2); }
+
+.sidebar-note {
+  margin-top: 24px;
+  padding: 12px 14px;
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  line-height: 1.55;
+  border: 1px solid var(--border);
+}
+
+/* MAIN */
+.main {
+  padding: 40px 52px 60px;
+  min-height: 100vh;
+}
+
+.section { display: none; }
+.section.visible { display: block; }
+
+/* PROGRESS */
+.prog-wrap { margin-bottom: 36px; }
+.prog-track {
+  height: 1.5px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  overflow: visible;
+  position: relative;
+}
+.prog-fill {
+  height: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: width 400ms cubic-bezier(0.4,0,0.2,1);
+}
+.prog-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--ink-4);
+}
+
+/* SECTION HEADER */
+.section-head { margin-bottom: 28px; }
+.step-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 10px;
+}
+.step-tag-num {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: var(--ink-3);
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+.section-body {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  margin-top: 7px;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 26px 0;
+}
+
+/* FIELD */
+.field-row { margin-bottom: 22px; }
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+/* SELECT */
+.sel-wrap { position: relative; }
+.sel-wrap select {
+  width: 100%;
+  padding: 10px 36px 10px 13px;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--ink);
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 140ms;
+}
+.sel-wrap select:focus { border-color: var(--ink); }
+.sel-arrow {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ink-3);
+}
+
+/* NICHE GRID */
+.niche-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.niche-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 15px 14px 14px;
+  cursor: pointer;
+  transition: all 150ms;
+  background: var(--bg);
+  position: relative;
+}
+
+.niche-card:hover {
+  border-color: var(--accent-bg);
+  background: var(--bg-2);
+}
+
+.niche-card.selected {
+  border-color: var(--accent-bg);
+  background: var(--bg-2);
+}
+
+.niche-card.selected::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+}
+
+.niche-svg { color: var(--ink-3); margin-bottom: 8px; display: block; }
+.niche-card.selected .niche-svg { color: var(--accent-bg); }
+.niche-name { font-size: 12.5px; font-weight: 500; color: var(--ink-2); line-height: 1.3; }
+.niche-card.selected .niche-name { color: var(--ink); }
+.niche-rate { font-size: 11px; color: var(--ink-4); margin-top: 3px; }
+.niche-card.selected .niche-rate { color: var(--green); font-weight: 500; }
+
+/* TIER GRID */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tier-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.tier-card:hover { border-color: var(--accent-bg); background: var(--bg-2); }
+.tier-card.selected { border-color: var(--accent-bg); background: var(--bg-2); }
+
+.tier-name { font-size: 13.5px; font-weight: 500; margin-bottom: 3px; }
+.tier-yrs { font-size: 11.5px; color: var(--ink-3); }
+.tier-mult {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: var(--bg-3);
+  color: var(--ink-3);
+}
+.tier-card.selected .tier-mult { background: var(--accent-bg); color: var(--accent-fg); }
+
+/* EXPENSE INPUTS */
+.expense-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+
+.expense-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.expense-left { display: flex; align-items: center; gap: 10px; }
+.expense-icon { color: var(--ink-3); flex-shrink: 0; }
+.expense-name { font-size: 13px; color: var(--ink-2); }
+
+.expense-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.currency-tag {
+  font-size: 12px;
+  color: var(--ink-3);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.expense-row input[type="number"] {
+  width: 110px;
+  padding: 7px 10px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  text-align: right;
+  outline: none;
+  transition: border-color 140ms;
+}
+
+.expense-row input[type="number"]:focus { border-color: var(--ink); }
+.expense-row input[type="number"]::-webkit-inner-spin-button,
+.expense-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+.expense-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-2);
+  margin-top: 4px;
+}
+
+.expense-total-label { font-size: 12px; font-weight: 500; color: var(--ink-2); }
+.expense-total-val {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--ink);
+}
+
+/* SAVINGS SLIDER */
+.slider-block { margin-bottom: 22px; }
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.slider-label { font-size: 12px; font-weight: 500; color: var(--ink-2); }
+.slider-reading {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+}
+.slider-unit { font-size: 12px; color: var(--ink-3); margin-left: 2px; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px var(--ink);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px var(--ink);
+  cursor: pointer;
+}
+
+/* ENGAGE CARDS */
+.engage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.engage-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 14px;
+  cursor: pointer;
+  transition: all 150ms;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.engage-card:hover { border-color: var(--accent-bg); background: var(--bg-2); }
+.engage-card.selected { border-color: var(--accent-bg); background: var(--bg-2); }
+
+.engage-icon { color: var(--ink-3); flex-shrink: 0; }
+.engage-card.selected .engage-icon { color: var(--accent-bg); }
+.engage-name { font-size: 13px; font-weight: 500; }
+.engage-desc { font-size: 11.5px; color: var(--ink-3); margin-top: 2px; }
+
+/* TOOLS */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.tool-item:hover { border-color: var(--accent-bg); background: var(--bg-2); }
+.tool-item.checked { border-color: var(--accent-bg); background: var(--bg-2); }
+
+.tool-check {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 150ms;
+}
+.tool-item.checked .tool-check { background: var(--accent-bg); border-color: var(--accent-bg); }
+.tool-name { font-size: 12.5px; color: var(--ink-2); flex: 1; }
+.tool-item.checked .tool-name { color: var(--ink); font-weight: 500; }
+.tool-rate-bump { font-size: 11px; color: var(--green); font-weight: 500; margin-left: auto; }
+
+/* PLATFORM PILLS */
+.platform-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+.pill {
+  padding: 6px 13px;
+  border: 1px solid var(--border-2);
+  border-radius: 20px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 150ms;
+  font-family: var(--sans);
+}
+.pill:hover { border-color: var(--accent-bg); }
+.pill.selected { background: var(--accent-bg); color: var(--accent-fg); border-color: var(--accent-bg); }
+
+/* NAV BUTTONS */
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms;
+  border: 1px solid var(--border-2);
+  background: var(--bg);
+  color: var(--ink-2);
+}
+.btn:hover { border-color: var(--accent-bg); color: var(--accent-bg); background: var(--bg-2); }
+.btn-primary { background: var(--accent-bg); color: #fff; border-color: var(--accent-bg); }
+.btn-primary:hover { opacity: 0.88; background: var(--accent-bg); color: #fff; }
+.btn-ghost { border-color: transparent; color: var(--ink-3); }
+.btn-ghost:hover { border-color: var(--accent-bg); color: var(--accent-bg); background: var(--bg-2); }
+
+/* RESULTS */
+.rate-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.rate-box {
+  border-radius: var(--radius-xl);
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rate-box-market {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.rate-box-floor {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.rate-box-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rate-box-market .rate-box-label { opacity: 0.45; }
+.rate-box-floor .rate-box-label { color: var(--ink-3); opacity: 1; }
+
+.rate-number {
+  font-family: var(--serif);
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.rate-currency {
+  font-size: 18px;
+  vertical-align: top;
+  line-height: 2.4;
+  letter-spacing: 0;
+}
+
+.rate-per { font-size: 14px; opacity: 0.5; margin-left: 4px; }
+.rate-floor-note { font-size: 11.5px; color: var(--ink-3); margin-top: 10px; }
+
+.rate-php {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.rec-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  color: var(--bg);
+  letter-spacing: 0.04em;
+}
+[data-theme="dark"] .rec-badge {
+  background: rgba(0,0,0,0.15);
+}
+
+.rate-box-floor .rec-badge {
+  background: var(--bg-3);
+  color: var(--ink-3);
+}
+
+/* SUMMARY CARDS */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.summary-card {
+  padding: 16px 16px;
+  background: var(--bg-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.summary-card-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 6px;
+}
+
+.summary-card-val {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.summary-card-sub {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 5px;
+}
+
+/* BREAKDOWN TABLE */
+.breakdown {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.breakdown-head {
+  padding: 11px 18px;
+  background: var(--bg-2);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.bd-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.bd-row:last-child { border-bottom: none; }
+.bd-row.total { background: var(--bg-2); }
+
+.bd-key { color: var(--ink-3); }
+.bd-val { font-weight: 500; color: var(--ink); }
+.bd-val.up { color: var(--green); }
+.bd-val.down { color: var(--red); }
+
+/* INSIGHT BOX */
+.insight {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.insight-ok { background: var(--green-bg); border: 1px solid rgba(124,58,237,0.15); color: var(--green-fg); }
+.insight-warn { background: var(--amber-bg); border: 1px solid rgba(146,97,10,0.15); color: var(--amber); }
+
+.insight-icon { flex-shrink: 0; margin-top: 1px; }
+
+/* TOGGLE */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 140ms;
+  margin-bottom: 8px;
+}
+.toggle-row:hover { background: var(--bg-2); }
+.toggle-left { display: flex; flex-direction: column; gap: 1px; }
+.toggle-title { font-size: 13px; font-weight: 500; }
+.toggle-desc { font-size: 11.5px; color: var(--ink-3); }
+.toggle-switch {
+  width: 38px;
+  height: 21px;
+  border-radius: 11px;
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 150ms;
+}
+.toggle-switch.on { background: var(--ink); border-color: var(--ink); }
+.toggle-dot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 150ms;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle-switch.on .toggle-dot { transform: translateX(17px); }
+
+/* THREE RATES */
+.three-rates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.three-rate {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  background: var(--bg-2);
+  position: relative;
+}
+
+.three-rate.featured {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.three-rate-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.18);
+  color: var(--bg);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+[data-theme="dark"] .three-rate-badge {
+  background: rgba(0,0,0,0.18);
+}
+
+.three-rate-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 8px;
+}
+
+.three-rate.featured .three-rate-label { color: rgba(255,255,255,0.5); }
+[data-theme="dark"] .three-rate.featured .three-rate-label { color: rgba(0,0,0,0.5); }
+
+.three-rate-val {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+
+.three-rate.featured .three-rate-val { color: var(--bg); }
+
+.three-rate-unit {
+  font-size: 13px;
+  letter-spacing: 0;
+  opacity: 0.6;
+  margin-left: 2px;
+}
+
+.three-rate-sub {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.three-rate.featured .three-rate-sub { color: rgba(255,255,255,0.45); }
+[data-theme="dark"] .three-rate.featured .three-rate-sub { color: rgba(0,0,0,0.45); }
+
+/* TAKE-HOME NOTE */
+.takehome-note {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  padding: 11px 14px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12.5px;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* HELPER TEXT */
+.helper-text {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 12px;
+  color: var(--ink-3);
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+.print-only { display: none; }
+
+/* FOOTER */
+footer {
+  padding: 48px 0 36px;
+  border-top: 1px solid var(--border);
+}
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+.footer-brand-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-style: italic;
+}
+.footer-brand-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; max-width: 240px; }
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 14px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 13.5px; color: var(--ink-3); transition: color 150ms; }
+.footer-links a:hover { color: var(--accent-bg); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--ink-4);
+}
+.footer-bottom-links { display: flex; gap: 20px; }
+.footer-bottom-links a { color: var(--ink-4); transition: color 150ms; }
+.footer-bottom-links a:hover { color: var(--ink-3); }
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+  .shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:600px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .rate-hero { grid-template-columns: 1fr; }
+  .summary-cards { grid-template-columns: 1fr 1fr; }
+  .three-rates { grid-template-columns: 1fr; }
+  .main { padding: 20px 16px 40px; }
+  .section-title { font-size: 20px; }
+  .rate-number { font-size: 42px; }
+}
+
+/* PRINT */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { font-size: 11px; margin: 0; padding: 0; }
+  html, body { height: auto; overflow: visible; }
+  nav { display: none !important; }
+  .sidebar { display: none !important; }
+  footer { display: none !important; }
+  .site-nav { display: none !important; }
+  .shell { grid-template-columns: 1fr; }
+  .main { padding: 10px 0; margin: 0; }
+  .section { display: block !important; page-break-inside: avoid; }
+  #step-1, #step-2, #step-3 { display: none !important; }
+  #step-4 { display: block !important; }
+  .nav-row { display: none !important; }
+  .prog-wrap { display: none !important; }
+  .step-tag { display: none !important; }
+  .section-head { display: none !important; }
+  .print-hide { display: none !important; }
+  .print-only { display: block !important; }
+  .print-proposal-header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #111; }
+  .print-brand-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .print-brand { font-family: var(--serif); font-size: 18px; font-weight: 700; color: #111; font-style: italic; }
+  .print-brand-sub { font-weight: 400; font-size: 11px; color: #777; margin-left: 6px; }
+  .print-date { font-size: 11px; color: #777; }
+  .print-proposal-title { font-family: var(--serif); font-size: 22px; letter-spacing: -0.02em; color: #111; margin-bottom: 2px; }
+  .print-proposal-sub { font-size: 12px; color: #555; }
+  .three-rates { grid-template-columns: 1fr !important; margin-bottom: 8px !important; }
+  .three-rate { padding: 14px 16px !important; }
+  .three-rate.survival { display: none !important; }
+  .three-rate.fair.featured { display: none !important; }
+  .three-rate.asking { background: #111 !important; color: #fff !important; }
+  .three-rate.asking .three-rate-label { color: rgba(255,255,255,0.5) !important; font-size: 10px !important; }
+  .three-rate.asking .three-rate-val { color: #fff !important; font-size: 28px !important; }
+  .three-rate.asking .three-rate-sub { color: rgba(255,255,255,0.45) !important; font-size: 10px !important; }
+  .print-cost, .print-quals { margin-bottom: 4px !important; }
+  .breakdown { margin-bottom: 0 !important; }
+  .breakdown-head { padding: 6px 12px !important; font-size: 9px !important; }
+  .bd-row { padding: 5px 12px !important; font-size: 11px !important; }
+  .print-quals .breakdown, .print-cost .breakdown { border-color: #ddd; }
+  .print-quals .breakdown-head, .print-cost .breakdown-head { background: #f5f5f5; color: #555; border-color: #ddd; }
+  .print-quals .bd-row, .print-cost .bd-row { border-color: #eee; }
+  .print-quals .bd-key, .print-cost .bd-key { color: #333; }
+  .print-quals .bd-val, .print-cost .bd-val { color: #111; }
+  .print-disclaimer { margin-top: 12px; padding-top: 8px; border-top: 1px solid #ddd; }
+  .print-disclaimer p { font-size: 8.5px !important; color: #999 !important; line-height: 1.4; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+   <div class="nav-logo-mark">
+    <img src="assets/images/Logo.gif" alt="Rei" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+   </div>
+   <span class="nav-logo-text">Rei</span>
+  </a>
+  <ul class="nav-links">
+   <li><a href="index.html#features">Features</a></li>
+   <li><a href="calculator.html" class="active">Calculator</a></li>
+   <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <div class="theme-toggle-dot">
+     <svg class="icon-sun" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-fg)" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="5.5" cy="5.5" r="2.2"/>
+      <path d="M5.5 1v1M5.5 9v1M1 5.5H2M9 5.5h1M2.2 2.2l.7.7M8.1 8.1l.7.7M8.8 2.2l-.7.7M2.9 8.1l-.7.7"/>
+     </svg>
+     <svg class="icon-moon" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="var(--accent-bg)" stroke-width="1.4" stroke-linecap="round">
+      <path d="M9.5 6.8A4.5 4.5 0 1 1 4.2 1.5a3.5 3.5 0 0 0 5.3 5.3z"/>
+     </svg>
+    </div>
+   </button>
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" onclick="openNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+ </div>
+</nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" onclick="if(event.target===this)closeNav()">
+ <div class="nav-drawer-panel">
+  <button class="nav-drawer-close" onclick="closeNav()" aria-label="Close menu">
+   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+   <li><a href="index.html#features" onclick="closeNav()">Features</a></li>
+   <li><a href="calculator.html" onclick="closeNav()">Calculator</a></li>
+   <li><a href="blog.html" onclick="closeNav()">Blog</a></li>
+   <li><a href="about.html" onclick="closeNav()">About</a></li>
+   <li><a href="contact.html" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-cta">
+   <button class="btn-nav" onclick="window.location.href='calculator.html'">Try it free</button>
+  </div>
+ </div>
+</div>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="wordmark">
+      <div class="wordmark-top">Rei</div>
+      <div class="wordmark-sub">Rate Engine Intelligence by Aleana</div>
+    </div>
+
+    <p class="nav-label">Your Progress</p>
+
+    <div class="nav-steps">
+      <div class="nav-step active" data-step="1" onclick="goToStep(1)">
+        <div class="step-dot">1</div>
+        <div class="step-text">
+          <div class="step-name">Niche & Experience</div>
+          <div class="step-hint">What you do, how long</div>
+        </div>
+      </div>
+      <div class="nav-step" data-step="2" onclick="goToStep(2)">
+        <div class="step-dot">2</div>
+        <div class="step-text">
+          <div class="step-name">Your Monthly Costs</div>
+          <div class="step-hint">What you need to earn</div>
+        </div>
+      </div>
+      <div class="nav-step" data-step="3" onclick="goToStep(3)">
+        <div class="step-dot">3</div>
+        <div class="step-text">
+          <div class="step-name">Work & Tools</div>
+          <div class="step-hint">How you'll be hired</div>
+        </div>
+      </div>
+      <div class="nav-step" data-step="4" onclick="goToStep(4)">
+        <div class="step-dot">4</div>
+        <div class="step-text">
+          <div class="step-name">Your Rate</div>
+          <div class="step-hint">Market + expense breakdown</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-note">
+      Rates are estimated benchmarks based on common PH VA pricing patterns in 2025–2026. Not a guaranteed market quote - use as a starting point.
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- STEP 1 -->
+    <div class="section visible" id="step-1">
+      <div class="prog-wrap">
+        <div class="prog-track"><div class="prog-fill" style="width:25%"></div></div>
+        <div class="prog-meta"><span>Step 1 of 4</span><span>25% complete</span></div>
+      </div>
+
+      <div class="section-head">
+        <div class="step-tag"><div class="step-tag-num">1</div> Niche</div>
+        <h1 class="section-title">What do you do?</h1>
+        <p class="section-body">Choose your primary service. Ranges are estimated benchmarks for Filipino VAs in 2025–2026 - your actual rate depends on your portfolio, client, and negotiation.</p>
+      </div>
+
+      <div id="niche-error" style="display:none;color:#B03030;font-size:12px;margin-bottom:6px">Please select a niche above.</div>
+
+      <div class="niche-grid">
+        <div class="niche-card" data-niche="admin" data-base="5.5" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="3.5" width="18" height="21" rx="1.5"/>
+            <path d="M9 9.5h10M9 13.5h10M9 17.5h7"/>
+            <path d="M11 3.5V2h6v1.5"/>
+          </svg>
+          <div class="niche-name">General Admin</div>
+          <div class="niche-rate">$3 – $8/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="social" data-base="7.5" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="14" r="3"/>
+            <circle cx="20" cy="7.5" r="3"/>
+            <circle cx="20" cy="20.5" r="3"/>
+            <path d="M10.7 12.7L17.3 9.3M10.7 15.3l6.6 3.9"/>
+          </svg>
+          <div class="niche-name">Social Media</div>
+          <div class="niche-rate">$4 – $12/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="content" data-base="8" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 21L17.5 10.5l4 4L11 25H7v-4z"/>
+            <path d="M15 13l4 4"/>
+            <path d="M19.5 9l1.5-1.5a2.1 2.1 0 0 1 3 3L22.5 12"/>
+          </svg>
+          <div class="niche-name">Content Writing</div>
+          <div class="niche-rate">$5 – $15/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="bookkeeping" data-base="9" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="5" width="18" height="18" rx="1.5"/>
+            <path d="M5 10h18M5 15h18M10 10v13M15 10v13"/>
+          </svg>
+          <div class="niche-name">Bookkeeping</div>
+          <div class="niche-rate">$6 – $15/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="tech" data-base="16" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 10l-4 4 4 4M18 10l4 4-4 4M15.5 8l-3 12"/>
+          </svg>
+          <div class="niche-name">Tech / Web Dev</div>
+          <div class="niche-rate">$10 – $30/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="executive" data-base="10" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="11" width="18" height="13" rx="1.5"/>
+            <path d="M9 11V9a5 5 0 0 1 10 0v2"/>
+            <circle cx="14" cy="17" r="2" fill="currentColor" stroke="none"/>
+            <path d="M14 19v2" stroke-width="1.5"/>
+          </svg>
+          <div class="niche-name">Executive Support</div>
+          <div class="niche-rate">$6 – $18/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="realestate" data-base="7" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 14L14 5l10 9"/>
+            <path d="M7 14v9h5v-6h4v6h5v-9"/>
+          </svg>
+          <div class="niche-name">Real Estate VA</div>
+          <div class="niche-rate">$5 – $12/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="ecommerce" data-base="7" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h3.5l2 10h13L25 10H9"/>
+            <circle cx="13" cy="23" r="1.8"/>
+            <circle cx="21" cy="23" r="1.8"/>
+          </svg>
+          <div class="niche-name">E-commerce</div>
+          <div class="niche-rate">$4 – $12/hr</div>
+        </div>
+
+        <div class="niche-card" data-niche="support" data-base="5" onclick="selectNiche(this)">
+          <svg class="niche-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 16V13a8 8 0 0 1 16 0v3"/>
+            <rect x="4.5" y="16" width="3.5" height="6" rx="1.5"/>
+            <rect x="20" y="16" width="3.5" height="6" rx="1.5"/>
+            <path d="M23.5 22a6.5 6.5 0 0 1-6.5 4h-2"/>
+          </svg>
+          <div class="niche-name">Customer Support</div>
+          <div class="niche-rate">$3 – $8/hr</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <label class="field-label">Years of experience</label>
+      <div id="tier-error" style="display:none;color:#B03030;font-size:12px;margin-bottom:6px">Please select your experience level.</div>
+      <div class="tier-grid">
+        <div class="tier-card" data-tier="entry" data-mult="0.7" onclick="selectTier(this)">
+          <div class="tier-name">Starting Out</div>
+          <div class="tier-yrs">0 – 1 year</div>
+          <div class="tier-mult">Lower band</div>
+        </div>
+        <div class="tier-card selected" data-tier="mid" data-mult="1.0" onclick="selectTier(this)">
+          <div class="tier-name">Experienced</div>
+          <div class="tier-yrs">2 – 4 years</div>
+          <div class="tier-mult">Mid range</div>
+        </div>
+        <div class="tier-card" data-tier="expert" data-mult="1.45" onclick="selectTier(this)">
+          <div class="tier-name">Specialist</div>
+          <div class="tier-yrs">5+ years</div>
+          <div class="tier-mult">Upper band</div>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextStep(1)">Next: Monthly costs &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Monthly Expenses -->
+    <div class="section" id="step-2">
+      <div class="prog-wrap">
+        <div class="prog-track"><div class="prog-fill" style="width:50%"></div></div>
+        <div class="prog-meta"><span>Step 2 of 4</span><span>50% complete</span></div>
+      </div>
+
+      <div class="section-head">
+        <div class="step-tag"><div class="step-tag-num">2</div> Expenses</div>
+        <h1 class="section-title">What do you need to live?</h1>
+        <p class="section-body">This calculates your <strong>floor rate</strong> - the minimum you must charge to cover your life. All amounts in Philippine Peso.</p>
+      </div>
+
+      <div class="expense-list">
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M2 8l6-5 6 5M3 8v6h4v-3h2v3h4V8"/>
+            </svg>
+            <span class="expense-name">Rent / boarding</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-rent" value="5000" min="0" step="500" oninput="updateTotal()">
+          </div>
+        </div>
+
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M3 13V6.5L8 3l5 3.5V13"/>
+              <path d="M5.5 13V9h5v4"/>
+              <path d="M3 13h10"/>
+            </svg>
+            <span class="expense-name">Food & groceries</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-food" value="6000" min="0" step="500" oninput="updateTotal()">
+          </div>
+        </div>
+
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <rect x="2" y="5" width="12" height="8" rx="1.5"/>
+              <path d="M5 5V3.5a3 3 0 0 1 6 0V5"/>
+              <circle cx="8" cy="9" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="expense-name">Internet & phone</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-internet" value="1800" min="0" step="100" oninput="updateTotal()">
+          </div>
+        </div>
+
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <circle cx="8" cy="8" r="5.5"/>
+              <path d="M8 5v3l2 2"/>
+            </svg>
+            <span class="expense-name">Transport & commute</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-transport" value="1500" min="0" step="200" oninput="updateTotal()">
+          </div>
+        </div>
+
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M8 2v12M5 5.5C5 4.1 6.3 3 8 3s3 1.1 3 2.5c0 3-3 4-3 5.5"/>
+              <path d="M5.5 12.5c0 .8 1.1 1.5 2.5 1.5s2.5-.7 2.5-1.5"/>
+            </svg>
+            <span class="expense-name">Utilities (electricity, water)</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-utils" value="1500" min="0" step="200" oninput="updateTotal()">
+          </div>
+        </div>
+
+        <div class="expense-row">
+          <div class="expense-left">
+            <svg class="expense-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M3 10.5L5.5 5l2.5 4 2-2.5L13 10.5"/>
+              <rect x="1.5" y="10.5" width="13" height="3" rx="1"/>
+            </svg>
+            <span class="expense-name">Other expenses</span>
+          </div>
+          <div class="expense-input-wrap">
+            <span class="currency-tag">PHP</span>
+            <input type="number" id="exp-other" value="2000" min="0" step="500" oninput="updateTotal()">
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="slider-block">
+        <div class="slider-top">
+          <span class="slider-label">Monthly savings goal</span>
+          <div>
+            <span class="slider-reading" id="savings-val">5,000</span>
+            <span class="slider-unit">PHP/month</span>
+          </div>
+        </div>
+        <input type="range" id="savings-slider" min="0" max="30000" step="1000" value="5000"
+          oninput="updateSavings(this.value)">
+        <div class="helper-text">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" style="flex-shrink:0;margin-top:1px">
+            <circle cx="6.5" cy="6.5" r="5"/>
+            <path d="M6.5 6v3M6.5 4.5v.5"/>
+          </svg>
+          Include this in your rate so you're actually building savings, not just covering bills.
+        </div>
+      </div>
+
+      <div class="expense-total-row">
+        <span class="expense-total-label">Total monthly need</span>
+        <span class="expense-total-val" id="expense-total">PHP 23,800</span>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="prevStep(2)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextStep(2)">Next: Work settings &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Work & Tools -->
+    <div class="section" id="step-3">
+      <div class="prog-wrap">
+        <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+        <div class="prog-meta"><span>Step 3 of 4</span><span>75% complete</span></div>
+      </div>
+
+      <div class="section-head">
+        <div class="step-tag"><div class="step-tag-num">3</div> Work Setup</div>
+        <h1 class="section-title">How will you work?</h1>
+        <p class="section-body">Engagement type, hours, and tools all affect what you can realistically charge.</p>
+      </div>
+
+      <label class="field-label">Engagement type</label>
+      <div id="engage-error" class="field-error" style="display:none;color:#B03030;font-size:12px;margin-bottom:8px">Please select an engagement type.</div>
+      <div class="engage-grid">
+        <div class="engage-card" data-type="hourly" data-util="0.75" data-emult="1.0" onclick="selectEngage(this)">
+          <svg class="engage-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <circle cx="9" cy="9" r="7"/>
+            <path d="M9 5.5v3.5l2.2 2.2"/>
+          </svg>
+          <div>
+            <div class="engage-name">Hourly</div>
+            <div class="engage-desc">Per hour billed</div>
+          </div>
+        </div>
+        <div class="engage-card selected" data-type="retainer" data-util="0.9" data-emult="0.88" onclick="selectEngage(this)">
+          <svg class="engage-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <rect x="3" y="3.5" width="12" height="11" rx="1.5"/>
+            <path d="M3 7.5h12M7 3.5V2M11 3.5V2"/>
+          </svg>
+          <div>
+            <div class="engage-name">Monthly retainer</div>
+            <div class="engage-desc">Discounted for guaranteed hours</div>
+          </div>
+        </div>
+        <div class="engage-card" data-type="project" data-util="0.7" data-emult="1.12" onclick="selectEngage(this)">
+          <svg class="engage-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <path d="M4.5 9l3 3L13.5 6"/>
+            <circle cx="9" cy="9" r="7"/>
+          </svg>
+          <div>
+            <div class="engage-name">Project-based</div>
+            <div class="engage-desc">Fixed fee per deliverable</div>
+          </div>
+        </div>
+        <div class="engage-card" data-type="fulltime" data-util="0.92" data-emult="0.85" onclick="selectEngage(this)">
+          <svg class="engage-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <rect x="3.5" y="5.5" width="11" height="8" rx="1.5"/>
+            <path d="M6.5 5.5v-1a2.5 2.5 0 0 1 5 0v1"/>
+          </svg>
+          <div>
+            <div class="engage-name">Full-time</div>
+            <div class="engage-desc">40 hrs/wk, long-term</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-block">
+        <div class="slider-top">
+          <span class="slider-label">Hours per week</span>
+          <div>
+            <span class="slider-reading" id="hrs-val">20</span>
+            <span class="slider-unit">hrs/week</span>
+          </div>
+        </div>
+        <input type="range" id="hrs-slider" min="5" max="40" step="5" value="20"
+          oninput="document.getElementById('hrs-val').textContent=parseInt(this.value); S.hours=parseInt(this.value)">
+      </div>
+
+      <div class="divider"></div>
+
+      <label class="field-label">Specialized tools (each adds a small rate premium)</label>
+      <div class="tools-grid">
+        <div class="tool-item" data-bump="0.5" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">Notion / Airtable</span>
+          <span class="tool-rate-bump">+$0.50</span>
+        </div>
+        <div class="tool-item" data-bump="0.75" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">HubSpot / CRM</span>
+          <span class="tool-rate-bump">+$0.75</span>
+        </div>
+        <div class="tool-item" data-bump="1.0" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">QuickBooks / Xero</span>
+          <span class="tool-rate-bump">+$1.00</span>
+        </div>
+        <div class="tool-item" data-bump="0.75" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">Adobe Creative Suite</span>
+          <span class="tool-rate-bump">+$0.75</span>
+        </div>
+        <div class="tool-item" data-bump="1.5" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">WordPress / Webflow</span>
+          <span class="tool-rate-bump">+$1.50</span>
+        </div>
+        <div class="tool-item" data-bump="1.5" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">AI Tools (GPT, Claude)</span>
+          <span class="tool-rate-bump">+$1.50</span>
+        </div>
+        <div class="tool-item" data-bump="1.0" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">Shopify / Amazon</span>
+          <span class="tool-rate-bump">+$1.00</span>
+        </div>
+        <div class="tool-item" data-bump="1.25" onclick="toggleTool(this)">
+          <div class="tool-check">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 4.5l2 2 4-4"/></svg>
+          </div>
+          <span class="tool-name">Zapier / Automation</span>
+          <span class="tool-rate-bump">+$1.25</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <label class="field-label">Platform / where you find clients</label>
+      <div class="platform-pills" id="platform-pills">
+        <div class="pill selected" data-fee="0" data-name="Direct" onclick="selectPlatform(this)">Direct / no platform</div>
+        <div class="pill" data-fee="0.10" data-name="Upwork" onclick="selectPlatform(this)">Upwork (up to 15%)</div>
+        <div class="pill" data-fee="0.20" data-name="Fiverr" onclick="selectPlatform(this)">Fiverr (20%)</div>
+        <div class="pill" data-fee="0" data-name="OnlineJobs.ph" onclick="selectPlatform(this)">OnlineJobs.ph (no cut)</div>
+        <div class="pill" data-fee="0.10" data-name="Freelancer.com" onclick="selectPlatform(this)">Freelancer.com (~10%)</div>
+      </div>
+      <div style="margin-top:8px" class="helper-text">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="6.5" cy="6.5" r="5"/><path d="M6.5 6v3M6.5 4.5v.5"/></svg>
+        OnlineJobs.ph charges employers a subscription - it does not take a % from your pay. Upwork's fee varies by contract (0–15%); 10% is used here as a common estimate.
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="prevStep(3)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="calculateAndShow()">Calculate my rate &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Results -->
+    <div class="section" id="step-4">
+      <div class="prog-wrap">
+        <div class="prog-track"><div class="prog-fill" style="width:100%"></div></div>
+        <div class="prog-meta"><span>Complete</span><span>Your rate is ready</span></div>
+      </div>
+
+      <div class="section-head">
+        <div class="step-tag"><div class="step-tag-num">4</div> Result</div>
+        <h1 class="section-title">Your recommended rate.</h1>
+        <p class="section-body">Based on estimated Philippine VA pricing benchmarks and your monthly expenses.</p>
+      </div>
+
+      <div id="results-output"></div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="prevStep(4)">&larr; Adjust inputs</button>
+        <button class="btn" onclick="window.print()">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" style="margin-right:5px;vertical-align:-1px">
+            <path d="M3 4.5V2h7v2.5M3 8.5H1.5V5h10v3.5H10M3 8.5v3h7v-3"/>
+          </svg>
+          Export / Print
+        </button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+ <div class="container">
+  <div class="footer-inner">
+   <div>
+    <div class="footer-brand-name">Rei</div>
+    <p class="footer-brand-desc">Rate Engine Intelligence — the rate calculator built for Filipino virtual assistants. Know your worth, charge accordingly.</p>
+   </div>
+   <div>
+    <div class="footer-col-title">Product</div>
+    <ul class="footer-links">
+     <li><a href="calculator.html">Calculator</a></li>
+     <li><a href="niche-benchmarks.html">Niche benchmarks</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Resources</div>
+    <ul class="footer-links">
+     <li><a href="blog.html">Blog</a></li>
+     <li><a href="va-pricing-guide.html">VA Pricing guide</a></li>
+     <li><a href="platform-fee-guide.html">Platform fee guide</a></li>
+     <li><a href="rate-increase-script.html">Rate increase script</a></li>
+    </ul>
+   </div>
+   <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+     <li><a href="about.html">About</a></li>
+     <li><a href="privacy.html">Privacy policy</a></li>
+     <li><a href="terms.html">Terms of use</a></li>
+     <li><a href="contact.html">Contact</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2025–2026 Rei Philippines. Benchmark estimates only.</span>
+   <div class="footer-bottom-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+const PHP_RATE = 56; // Approximate USD-PHP rate. Exchange rates change - treat as estimate.
+
+const S = {
+  niche: null, nicheBase: 0,
+  tier: 'mid', tierMult: 1.0,          // default: Experienced
+  engageType: 'retainer', engageMult: 0.88, utilFactor: 0.9, // default: retainer
+  hours: 20,
+  toolsBump: 0,
+  platformFee: 0, platformName: 'Direct'
+};
+
+function selectNiche(el) {
+  document.querySelectorAll('.niche-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.niche = el.dataset.niche;
+  S.nicheBase = parseFloat(el.dataset.base);
+  document.getElementById('niche-error').style.display = 'none';
+}
+
+function selectTier(el) {
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.tier = el.dataset.tier;
+  S.tierMult = parseFloat(el.dataset.mult);
+  document.getElementById('tier-error').style.display = 'none';
+}
+
+function selectEngage(el) {
+  document.querySelectorAll('.engage-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.engageType = el.dataset.type;
+  S.engageMult = parseFloat(el.dataset.emult);
+  S.utilFactor = parseFloat(el.dataset.util);
+  const err = document.getElementById('engage-error');
+  if (err) err.style.display = 'none';
+}
+
+function toggleTool(el) {
+  el.classList.toggle('checked');
+  let total = 0;
+  document.querySelectorAll('.tool-item.checked').forEach(t => total += parseFloat(t.dataset.bump));
+  S.toolsBump = parseFloat(total.toFixed(2));
+}
+
+function selectPlatform(el) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  S.platformFee = parseFloat(el.dataset.fee);
+  S.platformName = el.dataset.name;
+}
+
+function getExpTotal() {
+  const ids = ['exp-rent','exp-food','exp-internet','exp-transport','exp-utils','exp-other'];
+  let t = ids.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
+  return t + S.savings;
+}
+
+function updateTotal() {
+  const t = getExpTotal();
+  document.getElementById('expense-total').textContent = 'PHP ' + Math.round(t).toLocaleString();
+}
+
+function updateSavings(v) {
+  S.savings = parseInt(v);
+  document.getElementById('savings-val').textContent = parseInt(v).toLocaleString();
+  updateTotal();
+}
+
+function showError(id) {
+  const el = document.getElementById(id);
+  if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.getElementById('step-' + n).classList.add('visible');
+  document.querySelectorAll('.nav-step').forEach(s => {
+    const sn = parseInt(s.dataset.step);
+    s.classList.remove('active', 'done');
+    if (sn < n) s.classList.add('done');
+    else if (sn === n) s.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+}
+
+function nextStep(cur) {
+  if (cur === 1) {
+    let ok = true;
+    if (!S.niche) { showError('niche-error'); ok = false; }
+    if (!S.tier) { showError('tier-error'); ok = false; }
+    if (!ok) return;
+  }
+  if (cur === 2) { updateTotal(); }
+  goToStep(cur + 1);
+}
+
+function prevStep(cur) { goToStep(cur - 1); }
+
+function calculateAndShow() {
+  const fee = S.platformFee;
+
+  // --- GROSS market rate (what the client pays) ---
+  const marketGross = (S.nicheBase * S.tierMult * S.engageMult) + S.toolsBump;
+
+  // --- FLOOR: minimum gross the VA needs to charge so take-home covers expenses ---
+  const totalExpPHP = getExpTotal();
+  // Apply utilization: not every scheduled hour is a billable hour
+  const billableHrsMonth = S.hours * 4.33 * S.utilFactor;
+  const floorNet = (totalExpPHP / PHP_RATE) / billableHrsMonth;
+  // Gross-up so after-fee take-home still meets the floor
+  const floorGross = fee > 0 ? floorNet / (1 - fee) : floorNet;
+
+  // --- THREE RATES (all gross / client-facing) ---
+  const baseGross = Math.max(marketGross, floorGross);
+  const survivalGross = floorGross;                    // bare minimum
+  const fairGross     = baseGross;                     // market or floor, whichever is higher
+  const askingGross   = baseGross * 1.10;              // 10% confidence buffer
+
+  // Net take-home for each
+  const survivalNet = survivalGross * (1 - fee);
+  const fairNet     = fairGross     * (1 - fee);
+  const askingNet   = askingGross   * (1 - fee);
+
+  // Projections from asking rate (the recommended one)
+  const monthlyUSD = askingNet * billableHrsMonth;
+  const monthlyPHP = monthlyUSD * PHP_RATE;
+  const weeklyUSD  = askingNet * S.hours * S.utilFactor;
+
+  // Human-readable labels
+  const nicheLabels = {
+    admin: 'General Admin', social: 'Social Media', content: 'Content Writing',
+    bookkeeping: 'Bookkeeping', tech: 'Tech / Web Dev', executive: 'Executive Support',
+    realestate: 'Real Estate VA', ecommerce: 'E-commerce', support: 'Customer Support'
+  };
+  const tierLabels = { entry: 'Starting Out', mid: 'Experienced', expert: 'Specialist' };
+  const engageLabels = { hourly: 'Hourly', retainer: 'Monthly retainer', project: 'Project-based', fulltime: 'Full-time' };
+  const nicheName = nicheLabels[S.niche] || S.niche;
+  const tierName = tierLabels[S.tier] || S.tier;
+  const engageName = engageLabels[S.engageType] || S.engageType;
+
+  // Platform fee row
+  const feeRowMarket = fee > 0 ? `
+    <div class="bd-row"><div class="bd-key">Platform fee - ${S.platformName} (${Math.round(fee*100)}%)</div><div class="bd-val down">-$${(askingGross * fee).toFixed(2)}/hr</div></div>
+    <div class="bd-row"><div class="bd-key">Your take-home after fees</div><div class="bd-val">$${askingNet.toFixed(2)}/hr</div></div>` : '';
+
+  const toolsRow = S.toolsBump > 0 ? `<div class="bd-row"><div class="bd-key">Tools & skills premium</div><div class="bd-val up">+$${S.toolsBump.toFixed(2)}/hr</div></div>` : '';
+
+  // Insight
+  let insightHTML = '';
+  if (marketGross >= floorGross * 1.1) {
+    insightHTML = `<div class="insight insight-ok">
+      <svg class="insight-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 5"/><circle cx="8" cy="8" r="6.5"/></svg>
+      Your market rate comfortably covers your monthly expenses. You're in a solid position.
+    </div>`;
+  } else if (floorGross > marketGross * 1.25) {
+    insightHTML = `<div class="insight insight-warn">
+      <svg class="insight-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M8 2L14.5 13H1.5L8 2z"/><path d="M8 7v3M8 11.5v.5"/></svg>
+      Your expenses require $${floorGross.toFixed(2)}/hr gross to break even, but market rates for this niche tend to be lower. Consider reducing hours used for non-billable tasks, or upskilling toward a higher-rate niche.
+    </div>`;
+  } else {
+    insightHTML = `<div class="insight insight-ok">
+      <svg class="insight-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 5"/><circle cx="8" cy="8" r="6.5"/></svg>
+      Your recommended rate covers your monthly costs. Start here and revisit every quarter.
+    </div>`;
+  }
+
+  document.getElementById('results-output').innerHTML = `
+    <div class="print-only print-proposal-header">
+      <div class="print-brand-row">
+        <div class="print-brand">Rei <span class="print-brand-sub">Philippines</span></div>
+        <div class="print-date">${new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</div>
+      </div>
+      <h1 class="print-proposal-title">Rate Proposal</h1>
+      <p class="print-proposal-sub">${nicheName} Virtual Assistant · ${tierName} Level</p>
+    </div>
+
+    <div class="print-hide">${insightHTML}</div>
+
+    <div class="three-rates">
+      <div class="three-rate survival print-hide">
+        <div class="three-rate-label">Survival rate</div>
+        <div class="three-rate-val">$${survivalGross.toFixed(2)}<span class="three-rate-unit">/hr</span></div>
+        <div class="three-rate-sub">Bare minimum to cover costs</div>
+      </div>
+      <div class="three-rate fair featured">
+        <div class="three-rate-badge">Recommended</div>
+        <div class="three-rate-label print-hide">Fair market rate</div>
+        <div class="three-rate-label print-only">Market rate</div>
+        <div class="three-rate-val">$${fairGross.toFixed(2)}<span class="three-rate-unit">/hr</span></div>
+        <div class="three-rate-sub print-hide">Market or floor, whichever is higher</div>
+        <div class="three-rate-sub print-only">Based on current market benchmarks</div>
+      </div>
+      <div class="three-rate asking">
+        <div class="three-rate-label print-hide">Asking rate</div>
+        <div class="three-rate-label print-only">Quoted rate</div>
+        <div class="three-rate-val">$${askingGross.toFixed(2)}<span class="three-rate-unit">/hr</span></div>
+        <div class="three-rate-sub print-hide">Open with this - 10% buffer built in</div>
+        <div class="three-rate-sub print-only">Proposed hourly rate</div>
+      </div>
+    </div>
+
+    <div class="print-hide">
+    ${fee > 0 ? `<div class="takehome-note">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="7" cy="7" r="5.5"/><path d="M7 6.5v2.5M7 5v.5"/></svg>
+      After ${S.platformName}'s ${Math.round(fee*100)}% fee, your take-home from the asking rate is <strong>$${askingNet.toFixed(2)}/hr</strong> (≈ PHP ${Math.round(askingNet * PHP_RATE).toLocaleString()}/hr).
+    </div>` : ''}
+    </div>
+
+    <div class="print-hide">
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-card-label">Weekly take-home</div>
+        <div class="summary-card-val">$${Math.round(weeklyUSD)}</div>
+        <div class="summary-card-sub">${S.hours} hrs · ${Math.round(S.utilFactor*100)}% utilization</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-label">Monthly (USD)</div>
+        <div class="summary-card-val">$${Math.round(monthlyUSD)}</div>
+        <div class="summary-card-sub">~${Math.round(billableHrsMonth)} billable hrs/mo</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-label">Monthly (PHP)</div>
+        <div class="summary-card-val">&#8369;${Math.round(monthlyPHP).toLocaleString()}</div>
+        <div class="summary-card-sub">est. at PHP ${PHP_RATE}/USD</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="print-only print-cost">
+    <div class="breakdown">
+      <div class="breakdown-head">Estimated cost at quoted rate</div>
+      <div class="bd-row"><div class="bd-key">Hourly rate</div><div class="bd-val">$${askingGross.toFixed(2)}/hr</div></div>
+      <div class="bd-row"><div class="bd-key">Weekly (${S.hours} hrs/week)</div><div class="bd-val">$${(askingGross * S.hours).toFixed(0)}/week</div></div>
+      <div class="bd-row total"><div class="bd-key" style="font-weight:500;color:var(--ink)">Monthly (~${Math.round(billableHrsMonth)} hrs)</div><div class="bd-val" style="font-size:16px">$${Math.round(askingGross * billableHrsMonth).toLocaleString()}/mo</div></div>
+    </div>
+    </div>
+
+    <div class="print-only print-quals">
+    <div class="breakdown">
+      <div class="breakdown-head">Qualifications</div>
+      <div class="bd-row"><div class="bd-key">Specialization</div><div class="bd-val">${nicheName}</div></div>
+      <div class="bd-row"><div class="bd-key">Experience level</div><div class="bd-val">${tierName}</div></div>
+      <div class="bd-row"><div class="bd-key">Engagement type</div><div class="bd-val">${engageName}</div></div>
+      ${S.toolsBump > 0 ? `<div class="bd-row"><div class="bd-key">Tools & skills premium</div><div class="bd-val">Included</div></div>` : ''}
+      ${S.platformName ? `<div class="bd-row"><div class="bd-key">Platform</div><div class="bd-val">${S.platformName}</div></div>` : ''}
+    </div>
+    </div>
+
+    <div class="print-hide">
+    <div class="breakdown">
+      <div class="breakdown-head">How we got there</div>
+      <div class="bd-row"><div class="bd-key">Niche base - ${nicheName}</div><div class="bd-val">$${S.nicheBase.toFixed(2)}/hr</div></div>
+      <div class="bd-row"><div class="bd-key">Experience multiplier (${tierName})</div><div class="bd-val">&times; ${S.tierMult}</div></div>
+      <div class="bd-row"><div class="bd-key">Engagement type - ${engageName}</div><div class="bd-val">&times; ${S.engageMult}</div></div>
+      ${toolsRow}
+      <div class="bd-row"><div class="bd-key">Gross market rate (client-facing)</div><div class="bd-val">$${marketGross.toFixed(2)}/hr</div></div>
+      <div class="bd-row"><div class="bd-key">Expense floor gross (PHP ${Math.round(totalExpPHP).toLocaleString()} / ${Math.round(billableHrsMonth)} billable hrs)</div><div class="bd-val">$${floorGross.toFixed(2)}/hr min</div></div>
+      <div class="bd-row"><div class="bd-key">10% confidence buffer applied</div><div class="bd-val">&times; 1.10</div></div>
+      ${feeRowMarket}
+      <div class="bd-row total"><div class="bd-key" style="font-weight:500;color:var(--ink)">Asking rate (client-facing)</div><div class="bd-val" style="font-size:16px">$${askingGross.toFixed(2)}/hr</div></div>
+    </div>
+    </div>
+
+    <div class="print-hide">
+    <div class="breakdown">
+      <div class="breakdown-head">Annual projections (from asking rate)</div>
+      <div class="bd-row"><div class="bd-key">Conservative - 75% of scheduled hours</div><div class="bd-val">$${Math.round(monthlyUSD * 12 * 0.75).toLocaleString()} / PHP ${Math.round(monthlyPHP * 12 * 0.75).toLocaleString()}</div></div>
+      <div class="bd-row"><div class="bd-key">Full utilization</div><div class="bd-val up">$${Math.round(monthlyUSD * 12).toLocaleString()} / PHP ${Math.round(monthlyPHP * 12).toLocaleString()}</div></div>
+      <div class="bd-row"><div class="bd-key">Surplus above expenses (monthly)</div><div class="bd-val ${monthlyPHP > totalExpPHP ? 'up' : 'down'}">${monthlyPHP > totalExpPHP ? '+' : ''}PHP ${Math.round(monthlyPHP - totalExpPHP).toLocaleString()}</div></div>
+    </div>
+    </div>
+
+    <div class="print-hide">
+    <p style="font-size:11.5px;color:var(--ink-4);margin-top:12px;line-height:1.6">
+      Niche benchmarks are estimated ranges based on common PH VA pricing patterns - not guaranteed market figures. Exchange rate assumed at PHP ${PHP_RATE}/USD. Verify current rates before quoting.
+    </p>
+    </div>
+
+    <div class="print-only print-disclaimer">
+      <p>Rate generated by Rei Philippines. Benchmarks based on 2026 market data from OnlineJobs.ph, Upwork, and industry surveys. Rates may vary based on scope, volume, and specific requirements. This proposal is valid for 30 days from the date above.</p>
+    </div>
+  `;
+
+  goToStep(4);
+}
+
+// Initialize defaults
+S.savings = 5000;
+updateTotal();
+
+// Mobile nav
+function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navHamburger').classList.add('open');document.body.style.overflow='hidden';}
+function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+function toggleTheme(){
+ const h=document.documentElement;
+ h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
+ localStorage.setItem('va-theme',h.getAttribute('data-theme'));
+}
+(function(){
+ const s=localStorage.getItem('va-theme');
+ if(s)document.documentElement.setAttribute('data-theme',s);
+ else if(window.matchMedia('(prefers-color-scheme: dark)').matches)
+  document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+</body>
+</html>
